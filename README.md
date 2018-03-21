@@ -1,3 +1,3 @@
 # Guanyu
 
-<a href="https://github.com/GuanyuLee/Thesis/blob/master/blowups.pdf">Graduation Thesis</a>
+<a href="Thesis/blowups.pdf">Graduation Thesis</a>
