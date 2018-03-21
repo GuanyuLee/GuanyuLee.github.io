@@ -1,4 +1,4 @@
 # Guanyu
 <ul>
-  <a href="Thesis/blowups.pdf">Graduation Thesis</a>
+  <a href="GuanyuLee/Thesis/blowups.pdf">Graduation Thesis</a>
 </ul>
