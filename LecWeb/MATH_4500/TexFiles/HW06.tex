@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#06 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[Exercise 4.1.1 (15 pts)]Assuming $AB=BA$, show that
+\begin{displaymath}
+(A+B)^m=A^m+\binom{m}{1}A^{m-1}B+\cdots+\binom{m}{m-1}AB^{m-1}+B^m,
+\end{displaymath}
+where $\binom{m}{l}$ is the binomial symbol.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We consider the terms of summation in
+\begin{displaymath}
+(A+B)^m=(A+B)\cdot(A+B)\cdot\cdots\cdot(A+B)
+\end{displaymath}
+where the $A^lB^{m-l}$ shows one time because there are exact $l$ terms of $(A+B)$ where $A$ coming from, hence counting the number of $A^lB^{m-l}$ is actually determining how many cases when there are exact $l$ terms of $(A+B)$ that an $A$ is chosen, which is actually choosing $l$ terms in the total $m$ terms, which is $\binom{m}{l}$ by definition.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+\begin{remark}
+You can also prove this by induction, where Exercise 4.1.2 and some other result are necessary. Although personally I prefer the proof with induction, I think the author wanted us to prove it using some combinatorics. If anyone want to share his/her proof with induction, please email me the pdf/photos. I would be glad to put it on piazza.
+\end{remark}
+~\par
+
+\begin{problem}[Exercise 4.1.2 (14 pts)]Show that
+\begin{displaymath}
+\binom{m}{l}=\frac{m(m-1)\cdots(m-l+1)}{l!}=\frac{m!}{l!(m-l)!}.
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We count things in different ways. Denote by $[m]$ a finite set with $m$ different elements. We shall find two ways to computing the number of $l$-permutations in $[m]$.\par
+Firstly, we can first choose the expected $l$ elements, then permute them. By counting principles, this number is
+\begin{displaymath}
+\binom{m}{l}l!
+\end{displaymath}
+where $l!$ shows because there are $l!$ many possibilities that we can permute $l$ different elements. On the other hand, if we compute this number directly, we can first pick one, where there are $m$ cases. Then we pick another one from the remaining elements, where there are $(m-1)$ cases. Keep this procedure, the total number is
+\begin{displaymath}
+m(m-1)\cdots(m-l+1)=\frac{m!}{(m-l)!}.
+\end{displaymath}
+Hence we did prove that
+\begin{displaymath}
+\frac{m!}{(m-l)!}=\binom{m}{l}l!,
+\end{displaymath}
+therefore
+\begin{displaymath}
+\binom{m}{l}=\frac{m!}{(m-l)!l!}.
+\end{displaymath}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.1.3 (9 pts)]Deduce that the coefficient of $A^{m-l}B^l$ in
+\begin{displaymath}
+e^{A+B}=I+\frac{A+B}{1!}+\frac{(A+B)^2}{2!}+\frac{(A+B)^3}{3!}+\cdots
+\end{displaymath}
+is $\frac{1}{l!(m-l)!}$ whenever $AB=BA$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+By definition
+\begin{align*}
+e^{A+B}&=\sum_{n=0}^{\infty}\frac{(A+B)^n}{n!}\\
+&=\sum_{n=0}^{\infty}\left(\frac{1}{n!}\sum_{i=0}^{n}\binom{n}{i}A^iB^{n-i}\right)\\
+&=\sum_{n=0}^{\infty}\sum_{i=0}^{n}\frac{1}{i!(n-i)!}A^iB^{n-i}.
+\end{align*}
+Hence the coefficient of $A^{m-l}B^l$ is $\frac{1}{l!(m-l)!}$ whenever $AB=BA$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.1.4 (2 pts)]Show that the coefficient of $A^{m-l}B^l$ in
+\begin{displaymath}
+\left(I+\frac{A}{1!}+\frac{A^2}{2!}+\frac{A^3}{3!}+\cdots\right)\left(I+\frac{B}{1!}+\frac{B^2}{2!}+\frac{B^3}{3!}+\cdots\right)
+\end{displaymath}
+is also $\frac{1}{l!(m-l)!}$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Direct comparison of coefficients.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+\begin{remark}
+Actually this problem is much complicated than the solution here. It is related with the definition of the product of formal power. However it can be proved here (by norm of matrices) that the product is equal to the expected series. Anyone who can prove and want to share it please email me. I would also put it on piazza.
+\end{remark}
+
+\begin{problem}[Exercise 4.3.1 (0 pts)]Show the product rule that if $c(t)=a(t)b(t)$ then
+\begin{displaymath}
+c'(t)=a'(t)b(t)+a(t)b'(t).
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+By definition
+\begin{align*}
+c'(t)&=\lim_{x\to t}\frac{c(x)-c(t)}{x-t}=\lim_{x\to t}\frac{a(x)b(x)-a(t)b(t)}{x-t}\\
+&=\lim_{x\to t}\frac{a(x)b(x)-a(x)b(t)+a(x)b(t)-a(t)b(t)}{x-t}\\
+&=\lim_{x\to t}\frac{a(x)b(x)-a(x)b(t)}{x-t}+\lim_{x\to t}\frac{a(x)b(t)-a(t)b(t)}{x-t}\\
+&=a'(t)b(t)+a(t)b'(t).
+\end{align*}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.3.2 (0 pts)]Show also that if $c(t)=a^{-1}(t)$, and $a(0)=\bm{0}$, then $c'(0)=-a'(t)$, again without assuming that the product is commutative.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We know that
+\begin{align*}
+\bm{1}=a(t)c(t),
+\end{align*}
+taking derivative gives us
+\begin{align*}
+\bm{0}=a'(t)c(t)+a(t)c'(t).
+\end{align*}
+Plug $t=0$ in then we're done.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.3.3 (0 pts)]Show however, that if $c(t)=a(t)^2$ then $c'(t)$ is not equal to $2a(t)a'(t)$ for a certain quaternion-valued function $a(t)$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+It suffices to find $a(t)$ s.t. $a'(t)$ does not commute with $a(t)$. Put $a(t)=i+tj$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

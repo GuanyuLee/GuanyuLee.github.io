@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 Final}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\begin{problem}
+Suppose $\mathfrak{g}$ is a Lie algebra over $\mathbb{C}$. Recall the definition of a representation. We say a representation $\varphi:\mathfrak{g}\to\mathfrak{gl}(\mathfrak{g})$ is faithful if the only trivial image element is zero. Suppose $V$ is a finite dimensional $\mathbb{C}$-vector space.
+\begin{enumerate}
+\item Prove that $\mathrm{ad}:\mathfrak{sl}_3(\mathbb{C})\to\mathfrak{gl}(\mathfrak{sl}_3(\mathbb{C}))$, $X\to[X,-]$ is a faithful representation.
+\item Maybe polynomial representation?
+\end{enumerate}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}
+Justify if the following pairs are isomorphic:
+\begin{enumerate}
+\item The Lie group $U(1)\times U(1)$ and $O(2)$.
+\item The tangent space of $SO(3)$ and the tangent space of $SL(2)$.
+\item The matrix Lie algebra
+\begin{displaymath}
+\left\{\begin{pmatrix}&a&b\\ &&c\\&&\end{pmatrix}\middle|\;a,b,c\in\mathbb{C}\right\}
+\end{displaymath}
+and a 3-dimensional Lie algebra $\mathfrak{g}=\mathrm{span}\{e_1,e_2,e_3\}$ with Lie bracket s.t. $[e_1,e_2]=4e_3$, $[e_1,e_3]=[e_2,e_3]=0$.
+\item The group of matrices
+\begin{displaymath}
+G:=\left\{\begin{pmatrix}1&\\ &1\end{pmatrix},\begin{pmatrix}-\frac{\sqrt{3}}{2}&-\frac{1}{2}\\ \frac{1}{2}&-\frac{\sqrt{3}}{2}\end{pmatrix},\begin{pmatrix}-\frac{\sqrt{3}}{2}&\frac{1}{2}\\ -\frac{1}{2}&-\frac{\sqrt{3}}{2}\end{pmatrix},\begin{pmatrix}1&\\ &-1\end{pmatrix},\begin{pmatrix}-\frac{\sqrt{3}}{2}&-\frac{1}{2}\\ -\frac{1}{2}&\frac{\sqrt{3}}{2}\end{pmatrix},\begin{pmatrix}-\frac{\sqrt{3}}{2}&\frac{1}{2}\\ \frac{1}{2}&\frac{\sqrt{3}}{2}\end{pmatrix}\right\}
+\end{displaymath}
+and the group of matrices $H$ consisting of all $3\times3$ matrices with exactly one nonzero term of $1$ in each row and in each column (such as $\begin{pmatrix}&1&\\ 1&&\\&&1\end{pmatrix}$), where both group operation are matrices multiplication.
+\end{enumerate}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+(i) Not isomorphic.\par
+(ii) Isomorphic, because they are both of 3 dimension.\par
+(iii) Isomorphic, $E_{1,2}\mapsto e_1$, $E_{2,3}\mapsto e_2$, $E_{1,3}\mapsto4e_3$.\par
+(iv) Isomorphic, because $D_6\cong S_3$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}
+Suppose $J_\lambda$ be a matrix of the form
+\begin{displaymath}
+J_\lambda:=\begin{pmatrix}\lambda&1&&&\\ &\lambda&1&&\\ &&\ddots&\ddots&\\ &&&\lambda&1\\ &&&&\lambda\end{pmatrix},
+\end{displaymath}
+and suppose $J$ be a matrix with blocks
+\begin{displaymath}
+J:=\begin{pmatrix}J_{\lambda_1}&&&\\ &J_{\lambda_2}&&\\ &&\ddots&\\ &&&J_{\lambda_k}\end{pmatrix}
+\end{displaymath}
+where $J_{\lambda_i}$ and $J_{\lambda_j}$ may have different size.
+\begin{enumerate}
+\item Compute $e^{J_\lambda}$.
+\item Find $\log e^{J_\lambda}$.
+\item Compute $e^A$.
+\item Assume for any $n\times n$ matrix $A$, there exists invertible matrix $C$ s.t. $CAC^{-1}$ has the form of $J$ defined above. Explain why this is helpful for computing the matrix exponential.
+\end{enumerate}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

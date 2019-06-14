@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#08 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[Exercise 5.6.4 (10 pts)]
+When $X^2=-\det(X)I$, show that
+\begin{displaymath}
+e^X=\cos(\sqrt{\det(X)})I+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}X.
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+By definition
+\begin{align*}
+e^X&=\sum_{n=0}^{\infty}X^n\\
+&=\sum_{n=0}^{\infty}\left(\frac{X^{2n}}{(2n)!}+\frac{X^{2n+1}}{(2n+1)!}\right)\\
+&=\sum_{n=0}^{\infty}\left(\frac{X^{2n}}{(2n)!}+\frac{X^{2n}X}{(2n+1)!}\right)\\
+&=\sum_{n=0}^{\infty}\left(\frac{(-\det(X))^n}{(2n)!}I+\frac{(-\det(X))^n}{(2n+1)!}X\right)\\
+&=\sum_{n=0}^{\infty}\frac{(-\det(X))^n}{(2n)!}I+\sum_{n=0}^{\infty}\frac{(-\det(X))^n}{(2n+1)!}X\\
+&=\cos(\sqrt{\det(X)})I+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}X.
+\end{align*}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 5.6.5 (10 pts)]
+Using Exercise 5.6.4 and the fact that $\mathrm{Trace}(X)=0$, show that if
+\begin{displaymath}
+e^X=\begin{pmatrix}-1&1\\ &-1\end{pmatrix},
+\end{displaymath}
+then $\cos(\sqrt{\det(X)})=-1$, in which case $\sin(\sqrt{\det(X)})=0$, and there is a contradiction.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+By Hamilton-Caylay, $\mathrm{Trace}(X)=0$ implies $X^2=-\det(X)I$. By the previous problem
+\begin{displaymath}
+\begin{pmatrix}-1&1\\ &-1\end{pmatrix}=e^X=\cos(\sqrt{\det(X)})I+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}X.
+\end{displaymath}
+Take trace of both sides, then
+\begin{displaymath}
+-2=\mathrm{Trace}\left(\cos(\sqrt{\det(X)})I+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}X\right).
+\end{displaymath}
+But $\mathrm{Trace}$ is linear so
+\begin{displaymath}
+-2=\cos(\sqrt{\det(X)})\mathrm{Trace}(I)+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}\mathrm{Trace}(X)=2\cos(\sqrt{\det(X)}),
+\end{displaymath}
+hence $\cos(\sqrt{\det(X)})=-1$. Therefore $\sin(\sqrt{\det(X)})^2=1-\cos^2(\sqrt{\det(X)})=0$, thus $\sin(\sqrt{\det(X)})=0$. But this means
+\begin{displaymath}
+e^X=\cos(\sqrt{\det(X)})I+\frac{\sin(\sqrt{\det(X)})}{\sqrt{\det(X)}}X=\begin{pmatrix}-1&0\\ &-1\end{pmatrix},
+\end{displaymath}
+a contradiction.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.1.3 (5 pts)]
+Show that $SU(n)$ is a normal subgroup of $U(n)$ by describing it as the kernel of some homomorphism.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We know that
+\begin{displaymath}
+\det:U(n)\to\mathbb{C}
+\end{displaymath}
+is a group homomorphism, because $\det(AB)=\det(A)\det(B)$. Hence the kernel of $\det$, which is $SU(n)$, is a normal subgroup.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.1.4 (5 pts)]
+Show that $T_I(SU(n))$ is an ideal of $T_I(U(n))$ by checking that it has the required closure properties.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We know that
+\begin{displaymath}
+T_I(SU(n))=\{A\in M_n(\mathbb{C})\mid A+\bar{A}^T=0,\mathrm{Trace}(A)=0\}
+\end{displaymath}
+and
+\begin{displaymath}
+T_I(U(n))=\{A\in M_n(\mathbb{C})\mid A+\bar{A}^T=0\}.
+\end{displaymath}
+For any $A\in T_I(U(n))$ and $B\in T_I(SU(n))$,
+\begin{align*}
+\mathrm{Trace}~[A,B]=\mathrm{Trace}(AB-BA)=0
+\end{align*}
+since $\mathrm{Trace}~AB=\mathrm{Trace}~BA$. On the other hand
+\begin{displaymath}
+AB-BA+\overline{AB-BA}^T=AB-BA-\bar{A}^T\bar{B}^T-\bar{B}^T\bar{A}^T=0.
+\end{displaymath}
+Hence $T_I(SU(n))$ is an ideal of $T_I(U(n))$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.3.4 (10 pts)]
+Find a 1-dimensional ideal $J$ of $\mathfrak{u}(n)$, and show that $J$ is the tangent space of $Z(U(n))$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Put $J:=\{\theta iI\mid\theta\in\mathbb{R}\}$. We have already know that $Z(U(n))=\{e^{i\theta}I\mid \theta\in\mathbb{R}\}$. Since $\alpha(t):=e^{i\theta t}I$ is a path in $Z(U(n))$ and $\alpha'(0)=\theta iI$, we know that $J\subseteq T_I(Z(U(n)))$. Conversely, for any path $\alpha(t)$ s.t. $\alpha(0)=I\in Z(U(n))$, it has the form $\alpha(t)=e^{i\theta(t)}I$ where $\theta(t)$ is a continuous map from $\mathbb{R}$ to $\mathbb{R}$ s.t. $\theta(0)=0$. Thus $\alpha'(0)=\theta'(0)iI\in J$. This proves that $J$ is an ideal. Apparently $J$ is of dimension 1, and it is an ideal since it is the tangent space of some normal subgroup.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.3.5 (5 pts)]
+Also show that the $Z(U(n))$ is the image, under the exponential map, of the ideal $J$ in Exercise 6.3.4.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+For any $e^{i\theta}I\in Z(U(n))$, we have $\theta iI\in J$ s.t. $e^{\theta iI}=e^{i\theta}I\in Z(U(n))$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 5.5.1 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 5.5.2 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 5.5.4 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.4.1 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.4.2 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

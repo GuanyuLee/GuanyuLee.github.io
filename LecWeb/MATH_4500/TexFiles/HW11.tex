@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#11 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[Exercise 7.2.1 (10 pts)]
+Deduce from exponentiation of tangent vectors that
+\begin{displaymath}
+T_I(G)=\{X\mid e^{tX}~\text{for all }t\in\mathbb{R}\}.
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+For each $X\in T_I(G)$ and $t\in\mathbb{R}$, we know that $tX\in T_I(G)$. By the proof of the textbook, we know that $e^{tX}$ is an element in $G$. Therefore
+\begin{displaymath}
+T_I(G)\subseteq\{X\mid e^{tX}~\text{for all }t\in\mathbb{R}\}.
+\end{displaymath}
+Conversely, for each $X\in\{X\mid e^{tX}~\text{for all }t\in\mathbb{R}\}$, define $\alpha(t)=e^{tX}$, hence $\alpha(t)$ is a continuous path on $G$ s.t. $\alpha(0)=I$. Take the derivative then $\alpha'(0)=X$. Hence
+\begin{displaymath}
+T_I(G)\supseteq\{X\mid e^{tX}~\text{for all }t\in\mathbb{R}\}.
+\end{displaymath}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 7.2.2 (5 pts)]
+Given $X$ as the tangent vector to $e^{tX}$, and $Y$ as the tangent vector to $e^{tY}$, show that $X+Y$ is the tangent vector to $A(t)=e^{tX}e^{tY}$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Take $A(t)$ as defined, then
+\begin{align*}
+A'(t)&=\frac{\mathrm{d}}{\mathrm{d}t}(e^{tX}e^{tY})\\
+&=Xe^{tX}e^{tY}+e^{tX}Ye^{tY},
+\end{align*}
+hence $A'(0)=X+Y$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 7.2.3 (5 pts)]
+Similarly, show that if $X$ is a tangent vector then so is $rX$ for any $r\in\mathbb{R}$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Similar to last problem, let $B(t)=e^{rtX}$, then
+\begin{displaymath}
+B'(t)=rXe^{rtX}
+\end{displaymath}
+hence $B'(0)=rX$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 7.2.4 (10 pts)]
+Suppose that, for each $A$ in some neighborhood $N$ of $I$ in $G$, there is a smooth function $A(t)$, with values in $G$, such that $A(\frac{1}{n})=A^{\frac{1}{n}}$ for $n\in\mathbb{N}^*$. Show that $A'(0)=\log A$, so that $\log A\in T_I(G)$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Suppose we have a path $A(t)$ s.t. $A(0)=I$ with $A(\frac{1}{n})=A^{\frac{1}{n}}$ for $n\in\mathbb{N}^*$, then
+\begin{displaymath}
+A'(0)=\lim_{n\to+\infty}\frac{A(\frac{1}{n}-I)}{\frac{1}{n}}=\lim_{n\to+\infty}n\log A(\frac{1}{n})=\lim_{n\to+\infty}n\log A^{\frac{1}{n}}.
+\end{displaymath}
+Since that $A$ is commutative with itself, $n\log A^{\frac{1}{n}}=\log A^{\frac{1}{n}}+\cdots+\log A^{\frac{1}{n}}=\log(A^{\frac{1}{n}}\cdots A^{\frac{1}{n}})=\log A$. (Here is an issue of well-definedness. Instead of working for it, it is OK to just take that $\log A^{\frac{k}{n}}$ is well-defined for all $1\leq k\leq n$.)
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 7.2.5 (10 pts)]
+Suppose, conversely, that log maps some neighborhood $N$ of $I$ in $G$ into $T_I(G)$. Explain why we can assume that $N$ is mapped by log onto an $\epsilon$-ball $N_\epsilon(0)$ in $T_I(G)$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+It suffices to find some $\epsilon>0$ s.t. for any $|X|<\epsilon$, $|e^X-I|<1$, so that by the textbook for any $X\in N_\epsilon(0)$,
+\begin{displaymath}
+\log e^X=X\in N_\epsilon(0).
+\end{displaymath}
+Notice that
+\begin{align*}
+|e^X-I|&=\left|\sum_{n=1}^{\infty}\frac{X^n}{n!}\right|\\
+&\leq\sum_{n=1}^{\infty}\frac{|X^n|}{n!}\\
+&\leq\sum_{n=1}^{\infty}\frac{|X|^n}{n!}\\
+&\leq\sum_{n=1}^{\infty}\frac{\epsilon^n}{n!}=e^\epsilon-1
+\end{align*}
+where the first inequality comes from the continuity of the norm (NOT JUST THE TRIANGLE INEQUALITY). Hence we can just take one $\epsilon<\ln2$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 7.2.6 (5 pts)]
+Take $N$ as in Exercise 7.2.4., and $A\in N$, show that $t\log A\in T_I(G)$ for all $t\in[0,1]$, and deduce that $A^{\frac{1}{n}}$ exists for $n\in\mathbb{N}^*$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Directly from 7.2.3..
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

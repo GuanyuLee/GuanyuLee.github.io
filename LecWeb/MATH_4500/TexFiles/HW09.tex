@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#09 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[7+15+3=25 pts]
+Recall the definition of a homomorphism of  Lie algebras. We say two abstract Lie algebras are isomorphic if there is a bijective homomorphism $\varphi:\mathfrak{g}\to\mathfrak{h}$.
+\begin{enumerate}
+\item Prove that $\mathfrak{sl}_2(\mathbb{C}):=\{A\in M_2(\mathbb{C})\mid \mathrm{Trace}~A=0\}$ is a linear Lie algebra with the bracket $[A,B]=AB-BA$. Also prove that $\mathfrak{sl}_2(\mathbb{C})$ admits a $\mathbb{C}$-linear basis $X=\begin{pmatrix}&1\\ &\end{pmatrix}$, $Y=\begin{pmatrix}&\\ 1&\end{pmatrix}$ and $H=\begin{pmatrix}1&\\ &-1\end{pmatrix}$ with $[X,Y]=H$, $[H,X]=2X$, and $[H,Y]=-2Y$.
+\item Bearing in mind that for any vector space $V$, $\mathfrak{gl}(V):=\{A\in\mathrm{End}(V)\}$ with the bracket $[A,B]=AB-BA$ is an abstract Lie algebra, prove that we have a Lie algebra homomorphism
+\begin{align*}
+\mathrm{ad}:\mathfrak{sl}_2(\mathbb{C})&\to\mathfrak{gl}(\mathfrak{sl}_2(\mathbb{C}))\\
+x&\mapsto[x,-]
+\end{align*}
+which is injective but not surjective.
+\item Find the eigenvalues of the linear map $\mathrm{ad}(H):\mathfrak{sl}_2(\mathbb{C})\to\mathfrak{sl}_2(\mathbb{C})$.
+\end{enumerate}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+(i) If matrix $A\in\mathfrak{sl}_2(\mathbb{C})$, then $A=\begin{pmatrix}a&b\\ c&-a\end{pmatrix}$. Thus
+\begin{displaymath}
+A=\begin{pmatrix}a&b\\ c&-a\end{pmatrix}=a\begin{pmatrix}1&\\ &-1\end{pmatrix}+b\begin{pmatrix}&\\ 1&\end{pmatrix}+c\begin{pmatrix}&1\\ &\end{pmatrix}=aH+bY+cX,
+\end{displaymath}
+and clearly the expression is unique. Hence $X,Y,H$ form a basis.\par
+By direct computations,
+\begin{displaymath}
+[X,Y]=\begin{pmatrix}&1\\ &\end{pmatrix}\begin{pmatrix}&\\ 1&\end{pmatrix}-\begin{pmatrix}&\\ 1&\end{pmatrix}\begin{pmatrix}&1\\ &\end{pmatrix}=\begin{pmatrix}1&\\ &-1\end{pmatrix},
+\end{displaymath}
+\begin{displaymath}
+[H,X]=\begin{pmatrix}1&\\ &-1\end{pmatrix}\begin{pmatrix}&1\\ &\end{pmatrix}-\begin{pmatrix}&1\\ &\end{pmatrix}\begin{pmatrix}1&\\ &-1\end{pmatrix}=2\begin{pmatrix}&1\\ &\end{pmatrix},
+\end{displaymath}
+and
+\begin{displaymath}
+[H,Y]=\begin{pmatrix}1&\\ &-1\end{pmatrix}\begin{pmatrix}&\\ 1&\end{pmatrix}-\begin{pmatrix}&\\ 1&\end{pmatrix}\begin{pmatrix}1&\\ &-1\end{pmatrix}=-2\begin{pmatrix}&\\ 1&\end{pmatrix}.
+\end{displaymath}\par
+(ii) Since the Lie bracket of $\mathfrak{gl}(\mathfrak{sl}_2(\mathbb{C}))$ is bilinear, $\mathrm{ad}$ is a linear map. For any $z\in\mathfrak{sl}_2(\mathbb{C})$
+\begin{align*}
+\mathrm{ad}([x,y])(z)&=[[x,y],z]\\
+&=-[[z,x],y]-[[y,z],x]\\
+&=\mathrm{ad}(y)(-\mathrm{ad}(x)(z))+\mathrm{ad}(x)(\mathrm{ad}(y)(z))\\
+&=(\mathrm{ad}(x)\circ\mathrm{ad}(y)-\mathrm{ad}(y)\circ\mathrm{ad}(x))(z)\\
+&=[\mathrm{ad}(x),\mathrm{ad}(y)](z),^{[7]}
+\end{align*}
+where the second equation comes from Jacobi identity. Hence $\mathrm{ad}$ is a homomorphism. $\mathrm{ad}$ is apparently not surjective since $\mathfrak{sl}_2(\mathbb{C})$ is of dimension 3 but $\mathfrak{gl}(\mathfrak{sl}_2(\mathbb{C}))$ is of dimension 9$.^{[3]}$ Finally to see $\mathrm{ad}$ is injective, it suffices to prove that $\mathrm{ad}(X),\mathrm{ad}(Y),\mathrm{ad}(H)$ are linearly independent. Suppose we have a linear combination
+\begin{displaymath}
+a\mathrm{ad}(X)+b\mathrm{ad}(Y)+c\mathrm{ad}(H)=0,
+\end{displaymath}
+then for any $A\in\mathfrak{sl}_2(\mathbb{C})$
+\begin{displaymath}
+a\mathrm{ad}(X)(A)+b\mathrm{ad}(Y)(A)+c\mathrm{ad}(H)(A)=0.
+\end{displaymath}
+Take $A=X$ and $A=H$ respectively, and by the linearly independence of $X,Y,H$, we have $a=b=c=0$, which means $\mathrm{ad}(X),\mathrm{ad}(Y),\mathrm{ad}(H)$ are linearly independent.\par
+(iii) By part (i), $\mathrm{ad}(H)$ has eigenvectors $X,Y,H$ and eigenvalues $2,-2,0$ respectively.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.5.4 (10 pts)]
+Prove that each $4\times4$ skew-symmetric matrix is uniquely decomposable as a sum
+\begin{displaymath}
+\begin{pmatrix}&-a&-b&-c\\ a&&-c&b\\ b&c&&-a\\ c&-b&a&\end{pmatrix}+\begin{pmatrix}&-x&-y&-z\\ x&&z&-y\\ y&-z&&x\\ z&y&-x&\end{pmatrix}.
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+For any $4\times4$ skew-symmetric matrix $\begin{pmatrix}&-\alpha&-\beta&-\gamma\\ \alpha&&-\delta&-\epsilon\\ \beta&\delta&&-\eta\\ \gamma&\epsilon&\eta&\end{pmatrix}$, we have
+\begin{equation}\label{map}
+\begin{pmatrix}&-\alpha&-\beta&-\gamma\\ \alpha&&-\delta&-\epsilon\\ \beta&\delta&&-\eta\\ \gamma&\epsilon&\eta&\end{pmatrix}=\begin{pmatrix}&-\frac{\alpha+\eta}{2}&-\frac{\beta-\epsilon}{2}&-\frac{\gamma+\delta}{2}\\ \frac{\alpha+\eta}{2}&&-\frac{\gamma+\delta}{2}&\frac{\beta-\epsilon}{2}\\ \frac{\beta-\epsilon}{2}&\frac{\gamma+\delta}{2}&&-\frac{\alpha+\eta}{2}\\ \frac{\gamma+\delta}{2}&-\frac{\beta-\epsilon}{2}&\frac{\alpha+\eta}{2}&\end{pmatrix}+\begin{pmatrix}&-\frac{\alpha-\eta}{2}&-\frac{\beta+\epsilon}{2}&-\frac{\gamma-\delta}{2}\\ \frac{\alpha-\eta}{2}&&\frac{\gamma-\delta}{2}&-\frac{\beta+\epsilon}{2}\\ \frac{\beta+\epsilon}{2}&-\frac{\gamma-\delta}{2}&&\frac{\alpha-\eta}{2}\\ \frac{\gamma-\delta}{2}&\frac{\beta+\epsilon}{2}&-\frac{\alpha-\eta}{2}&\end{pmatrix}.
+\end{equation}
+The uniqueness comes from the fact that writing into the form of a sum gives us a linear system of equations.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 6.5.6 (15 pts)]
+Deduce from Exercises 6.5.4 and 6.5.5 that $\mathfrak{so}(4)$ is isomorphic to the direct product $\mathfrak{so}(3)\times\mathfrak{so}(3)$ (also known as the direct sum and commonly written $\mathfrak{so}(3)\oplus\mathfrak{so}(3)$).
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Let $I=-\bm{E}_{12}-\bm{E}_{34},J=-\bm{E}_{13}+\bm{E}_{24},K=-\bm{E}_{14}-\bm{E}_{23},$ and $L=-\bm{E}_{12}+\bm{E}_{34},M=-\bm{E}_{13}-\bm{E}_{24},N=-\bm{E}_{14}+\bm{E}_{23},$, we have that
+\begin{displaymath}
+\begin{pmatrix}&-\alpha&-\beta&-\gamma\\ \alpha&&-\delta&-\epsilon\\ \beta&\delta&&-\eta\\ \gamma&\epsilon&\eta&\end{pmatrix}=\frac{\alpha+\eta}{2}I+\frac{\beta-\epsilon}{2}J+\frac{\gamma+\delta}{2}K+\frac{\alpha-\eta}{2}L+\frac{\beta+\epsilon}{2}M+\frac{\gamma-\delta}{2}N.
+\end{displaymath}
+And also by Exercise 6.5.5. and direct computation, $[I,J]=2K,[J,K]=2I,[K,I]=2J$ and $[L,M]=2N,[M,N]=2L,[N,L]=2M.^{[10]}$ But also we have that $[I,L]=[I,M]=[I,N]=[J,L]=[J,M]=[J,N]=[K,L]=[K,M]=[K,N]=0$, hence we have two copies of $\mathfrak{so}(3)$ in $\mathfrak{so}(4)$, and by the linear independence we know that $\mathfrak{so}(4)\cong\mathfrak{so}(3)\times\mathfrak{so}(3)$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.1.3 (5 pts)]
+Give an example of an infinite intersection of open sets that is not open.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Let $X=\mathbb{R}$ be the topological space with the Euclidean topology, and let $U_n:=(-\frac{1}{n},\frac{1}{n})$ be the sequence of open sets. Then
+\begin{displaymath}
+\bigcap_{n=1}^\infty U_n=\{0\},
+\end{displaymath}
+which is a closed subset instead of an open set.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.2.1 (10 pts)]
+Prove that $U(n)$, $SU(n)$ and $Sp(n)$ are closed subsets of the appropriate matrix spaces.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Define the map
+\begin{align*}
+\varphi_1:M_n(\mathbb{C})&\to M_n(\mathbb{C})\\
+A&\mapsto A\bar{A}^T,
+\end{align*}
+then $\varphi_1$ is obviously continuous and $U(n)$ is the preimage of the point $\{I\}$, hence it is closed in $M_n(\mathbb{C})$. Similarly, define
+\begin{align*}
+\varphi_2:U(n)&\to\mathbb{C}\\
+A&\mapsto\det A
+\end{align*}
+and
+\begin{align*}
+\varphi_3:M_n(\mathbb{H})&\to M_n(\mathbb{H})\\
+A&\mapsto A\bar{A}^T,
+\end{align*}
+where $SU(n)=\varphi_2^{-1}(1)$ and $Sp(n)=\varphi_3^{-1}(I)$, i.e. $SU(n)$ and $Sp(n)$ are preimages of two closed points. In conclusion, $U(n)$ is closed in $M_n(\mathbb{C})$, $SU(n)$ is closed in $U(n)$ hence in $M_n(\mathbb{C})$, and $Sp(n)$ is closed in $M_n(\mathbb{H})$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

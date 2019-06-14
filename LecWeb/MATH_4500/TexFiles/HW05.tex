@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{enumerate}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{marvosym}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#05 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[35 pts]
+Suppose $V$ is a finite dimensional vector space over $\mathbb{R}$ (or $\mathbb{C}$), and suppose $B$ is a function $V\times V\to\mathbb{R}$ (or $V\times V\to\mathbb{C}$). We say $B$ is a bilinear form if for any $u,v,w\in V$ and $a\in\mathbb{R}$ (or $\mathbb{C}$)
+\begin{align*}
+B(u+v,w)&=B(u,w)+B(v,w)\\
+B(u,v+w)&=B(u,v)+B(u,w)\\
+B(au,v)&=aB(u,v)\\
+B(u,av)&=\bar{a}B(u,v)
+\end{align*}
+hold. We say a linear form $B$ is symmetric if $B(u,v)=B(v,u)$ for all $u,v\in V$, anti-symmetric if $B(u,v)=-B(v,u)$ for all $u,v\in V$, alternating if $B(u,u)=0$ for all $u\in V$.
+\begin{enumerate}[(i)]
+\item Suppose $B:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$, defined as $B(\bm{u},\bm{v})=\bm{u}\cdot\bm{v}=\bm{u}\bm{v}^T$ is a symmetric bilinear form over $\mathbb{R}^n$.
+\item Suppose $H:\mathbb{C}^n\times\mathbb{C}^n\to\mathbb{C}$, defined as $H(\bm{u},\bm{v})=\bm{u}\bar{\bm{v}}^T$ is a bilinear form over $\mathbb{C}^n$ but not symmetric.
+%\item Prove that a bilinear $B:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ is anti-symmetric if and only if $B$ is alternating.
+%\item Prove that if $\mathbb{R}^n$ is endowed with an anti-symmetric bilinear form $\omega$, where $\omega(\bm{u},\bm{v})=0$ for all $\bm{v}\in\mathbb{R}^n$ if and only if $\bm{u}=0$, then $n$ is even.
+\item Suppose $\omega$ is an anti-symmetric form defined on $\mathbb{R}^{4}$ as
+\begin{align*}
+\omega(e_i,e_j)&=1~~~~\text{if}~i<j\\
+\omega(e_i,e_i)&=0
+\end{align*}
+for all $i,j=1,\cdots,4$. Then define group $G:=\{A\in GL_4(\mathbb{R})\mid\omega(Ax,Ay)=\omega(x,y)~\text{for all}~x,y\in\mathbb{R}^2\}$. Prove that $G$ is a group.
+\item Show that for $\bm{u},\bm{v}\in\mathbb{R}^{4}$,
+\begin{displaymath}
+B_{3,1}(\bm{u},\bm{v})=u_1v_1+u_2v_2+u_3v_3-u_4v_4
+\end{displaymath}
+is a symmetric bilinear form. Is $B_{3,1}$ an inner product? Define
+\begin{displaymath}
+G:=\{A\in GL_4(\mathbb{R})\mid B_{3,1}(Ax,Ay)=B_{3,1}(x,y)~\text{for all}~x,y\in\mathbb{R}^2\}.
+\end{displaymath}
+Prove that $G$ is a group. It is denoted by $SO(3,1)$ and is called the Lorentz group and it plays an important role in physics.
+\end{enumerate}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+%(iv) Pick an nonzero element $\bm{u}_1$, then the linear function $\omega(\bm{u}_1,-)$ is nontrivial. Hence there is a $\bm{v}_1$ s.t. $\omega(\bm{u}_1,\bm{v}_1)=1$. Let $V_1=\mathrm{span}\{\bm{u}_1,\bm{v}_1\}$, then construct the subspace of $V$ perpendicular to $V_1$ under $\omega$, and we can continue the procedure.\par
+I leave all the verifications in (i) to (iv) for you to check. They should be easy.\\
+~\par
+(i) $B$ is a bilinear form$.^{[4]}$. It is symmetric$.^{[2]}$\par
+(ii) $B$ is a bilinear form$.^{[4]}$. It is not symmetric simply because $H(u,v)=i\neq-i=H(v,u)$ where $u=(1,0,\cdots,0)$ and $v=(i,0,\cdots,0).^{[3]}$\par
+(iii) $\omega$ is antisymmetric since it is antisymmetric on a basis$.^{[4]}$ The reason why there is a subgroup $G\subseteq GL(V)$ does not depend on the structure of the bilinear form. As long as there is a bilinear form $\omega$ (we do not have any extra information on the bilinear form), there is a subgroup $G$ of $GL(V)$ defined by
+\begin{displaymath}
+G:=\{A\in GL(V)\mid B(Ax,Ay)=B(x,y)~\text{for all}~x,y\in V\}.
+\end{displaymath}
+To verify it is a group, it suffices to prove $G$ is a subgroup of $GL(V)$. So we need to check that: (a) the identity matrix $I$ is contained in $G$, (b) if $A,B$ are elements in $G$, then so is $AB$, (c) if $A\in G$, then $A^{-1}\in G$.\par
+(a) is clear. For $A,B\in G$, we know that
+\begin{align*}
+\omega(ABx,ABy)&=\omega(A(Bx),A(By))\\
+&=\omega(Bx,By)\\
+&=\omega(x,y).
+\end{align*}
+For $A\in G$, then
+\begin{align*}
+\omega(x,y)&=\omega((AA^{-1})x,(AA^{-1})y)\\
+&=\omega(A(A^{-1}x),A(A^{-1}y))\\
+&=\omega(A^{-1}x,A^{-1}y).^{[6]}
+\end{align*}\par
+(iv) As we have mentioned, the reasons why $G$ forms a group are the same as (iii)$.^{[3]}$ It is symmetric because
+\begin{displaymath}
+B_{3,1}(\bm{u},\bm{v})=u_1v_1+u_2v_2+u_3v_3-u_4v_4=v_1u_1+v_2u_2+v_3u_3-v_4u_4=B_{3,1}(\bm{v},\bm{u}).^{[6]}
+\end{displaymath}
+$B_{3,1}$ is not an inner product, because $B_{3,1}(e_4,e_4)=-1<0.^{[3]}$
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.5.3 (13 pts)]Show, directly from the definition of matrix exponentiation, that
+\begin{displaymath}
+A=\begin{pmatrix}&-\theta\\ \theta&\end{pmatrix}
+\end{displaymath}
+implies
+\begin{displaymath}
+e^A=\begin{pmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{pmatrix}.
+\end{displaymath}
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+We first prove that
+\begin{displaymath}
+A^n=\left\{\begin{matrix}\begin{pmatrix}&(-1)^\frac{n+1}{2}\theta^n\\ (-1)^\frac{n-1}{2}\theta^n&\end{pmatrix}&\text{if}~n~\text{is odd;}\\ \begin{pmatrix}(-1)^\frac{n}{2}\theta^n&\\ &(-1)^\frac{n}{2}\theta^n&\end{pmatrix}&\text{otherwise.}\end{matrix}\right..^{[3]}
+\end{displaymath}
+They are clear for $n=1$ and $n=2$. Suppose it is true for $n$. When $n$ is odd, then
+\begin{displaymath}
+A^{n+1}=A^nA=\begin{pmatrix}&(-1)^\frac{n+1}{2}\theta^n\\ (-1)^\frac{n-1}{2}\theta^n&\end{pmatrix}\begin{pmatrix}&-\theta\\ \theta&\end{pmatrix}=\begin{pmatrix}(-1)^\frac{n+1}{2}\theta^{n+1}&\\ &(-1)^\frac{n+1}{2}\theta^{n+1}&\end{pmatrix},
+\end{displaymath}
+when $n$ is even, then
+\begin{displaymath}
+A^{n+1}=A^nA=\begin{pmatrix}(-1)^\frac{n}{2}\theta^n&\\ &(-1)^\frac{n}{2}\theta^n&\end{pmatrix}\begin{pmatrix}&-\theta\\ \theta&\end{pmatrix}=\begin{pmatrix}&(-1)^\frac{n+2}{2}\theta^n\\ (-1)^\frac{n}{2}\theta^n&\end{pmatrix}.
+\end{displaymath}
+Hence by induction, the conclusion is correct$.^{[5]}$\par
+Thus, by the definition,
+\begin{align*}
+e^A&=I+A+\frac{A^2}{2}+\cdots+\frac{A^{2n}}{(2n)!}+\frac{A^{2n+1}}{(2n+1)!}+\cdots\\
+&=\begin{pmatrix}1&\\ &1\end{pmatrix}+\begin{pmatrix}&-\theta\\ \theta&\end{pmatrix}+\cdots+\begin{pmatrix}(-1)^n\theta^{2n}&\\ &(-1)^n\theta^{2n}&\end{pmatrix}+\begin{pmatrix}&(-1)^{n+1}\theta^{2n+1}\\ (-1)^n\theta^{2n+1}&\end{pmatrix}+\cdots\\
+&=\begin{pmatrix}\sum_{n=1}^{\infty}(-1)^n\theta^{2n}&\sum_{n=1}^{\infty}(-1)^{n+1}\theta^{2n+1}\\ \sum_{n=1}^{\infty}(-1)^n\theta^{2n+1}&\sum_{n=1}^{\infty}(-1)^n\theta^{2n}\end{pmatrix}\\
+&=\begin{pmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{pmatrix}.^{[5]}
+\end{align*}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 4.5.4 (7 pts)]Suppose $D$ is a diagonal matrix with diagonal entries $\lambda_1,\lambda_2,\cdots,\lambda_k$. By computing the powers $D^n$ show that $e^D$ is a diagonal matrix with diagonal entries $e^{\lambda_1},e^{\lambda_2},\cdots,e^{\lambda_k}$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]We first prove that $D^n=\mathrm{diag}(\lambda_1^n,\lambda_2^n,\cdots,\lambda_k^n)$. First it is clear when $n=0$. Suppose it is true for $n$, then
+\begin{displaymath}
+D^{n+1}=D^nD=\begin{pmatrix}\lambda_1^n&&&\\ &\lambda_2^n&&\\ &&\ddots&\\ &&&\lambda_k^n\end{pmatrix}\begin{pmatrix}\lambda_1&&&\\ &\lambda_2&&\\ &&\ddots&\\ &&&\lambda_k\end{pmatrix}=\begin{pmatrix}\lambda_1^{n+1}&&&\\ &\lambda_2^{n+1}&&\\ &&\ddots&\\ &&&\lambda_k^{n+1}\end{pmatrix}.^{[4]}
+\end{displaymath}
+Thus by definition,
+\begin{align*}
+e^D=I+D+\frac{D^2}{2}+\cdots&=\begin{pmatrix}1&&&\\ &1&&\\ &&\ddots&\\ &&&1\end{pmatrix}+\begin{pmatrix}\lambda_1&&&\\ &\lambda_2&&\\ &&\ddots&\\ &&&\lambda_k\end{pmatrix}+\cdots+\begin{pmatrix}\frac{\lambda_1^n}{n!}&&&\\ &\frac{\lambda_2^n}{n!}&&\\ &&\ddots&\\ &&&\frac{\lambda_k^n}{n!}\end{pmatrix}+\cdots\\
+&=\begin{pmatrix}1+\lambda_1+\cdots+\frac{\lambda_1^n}{n!}+\cdots&&&\\ &1+\lambda_2+\cdots+\frac{\lambda_2^n}{n!}+\cdots&&\\ &&\ddots&\\ &&&1+\lambda_k+\cdots+\frac{\lambda_k^n}{n!}+\cdots\end{pmatrix}\\
+&=\begin{pmatrix}e^{\lambda_1}&&&\\ &e^{\lambda_2}&&\\ &&\ddots&\\ &&&e^{\lambda_k}\end{pmatrix}.^{[3]}
+\end{align*}
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 

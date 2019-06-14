@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+
+\title{Math 4500 HW \#10 Solutions}
+\author{Instructor: Birgit Speh\\ TA: Guanyu Li}
+\date{}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\theoremstyle{plain}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\maketitle\par
+
+\emph{This solution set is not error-free. Please email me (gl479\MVAt cornell.edu) if you spot any errors or typos!}
+
+\begin{problem}[Exercise 8.2.2 (7 pts)]
+Show that $GL_n(\mathbb{C})$ is an open subset of $M_n(\mathbb{C})$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Considering the continuous function
+\begin{displaymath}
+\det:M_n(\mathbb{C})\to\mathbb{C},
+\end{displaymath}
+$GL_n(\mathbb{C})$ is the preimage of $\mathbb{C}-\{0\}$. The continuity tells us that $GL_n(\mathbb{C})$ is open.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.3.4 (7 pts)]
+Give an example of a continuous function $f$ on $\mathbb{R}$ and a set $S$ s.t.
+\begin{displaymath}
+f(\bar{S})\neq\overline{f(S)},
+\end{displaymath}
+where $\bar{S}$ is the closure of $S$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Consider
+\begin{displaymath}
+f(x)=\arctan x,
+\end{displaymath}
+and $S=\mathbb{R}$, then $(-\frac{\pi}{2},\frac{\pi}{2})=f(S)=f(\bar{S})\subsetneqq[-\frac{\pi}{2},\frac{\pi}{2}]=\overline{f(S)}$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.4.5 (10 pts)]
+Show that $GL(n,\mathbb{C})$ and $SL(n,\mathbb{C})$ are not compact.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+First it is not hard to prove that a continuous image of a compact set is still compact (you could prove it yourself). Hence we consider the continuous map $\det:GL(n,\mathbb{C})\to\mathbb{C}$, its image is $\mathbb{C}-\{0\}$ which is not compact, hence $GL(n,\mathbb{C})$ is not compact.\par
+For the second part, we shall use the fact that a subset $C$ is compact in an Euclidean space if and only if it is bounded and closed. But the matrices
+\begin{displaymath}
+A_k:=\begin{pmatrix}k&&&&\\ &\frac{1}{k}&&&\\ &&1&&\\ &&&\ddots&\\ &&&&1
+\end{pmatrix}
+\end{displaymath}
+are element in $SL_n(\mathbb{C})$ however $\lVert A_k\rVert>k\to+\infty$ as $k\to+\infty$. Hence $SL_n(\mathbb{C})$ is not bounded.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.6.1 (6 pts)]
+Write $\begin{pmatrix}-1&1\\ &-1\end{pmatrix}$ as the product of two matrices in $SL(2,\mathbb{C})$ with entries $0,i$ or $-i$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\begin{displaymath}
+\begin{pmatrix}-1&1\\ &-1\end{pmatrix}=\begin{pmatrix}i&i\\ &-i\end{pmatrix}\begin{pmatrix}i&\\ &-i\end{pmatrix}.
+\end{displaymath}
+Notice that two matrices are traceless.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.6.2 (10 pts)]
+Deduce from Exercise 8.6.1 and Exercise 5.6.4 that $\begin{pmatrix}-1&1\\ &-1\end{pmatrix}=e^{X_1}e^{X_2}$ for some $X_1,X_2\in T_I(SL(2,\mathbb{C}))$.
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+Suppose that $\begin{pmatrix}i&i\\ &-i\end{pmatrix}=e^{X_1}$. By Caylay-Hamilton, we can use the result from Problem 5.6.4.,
+\begin{displaymath}
+e^{X_1}=\cos(\sqrt{\det(X_1)})I+\frac{\sin(\sqrt{\det(X_1)})}{\sqrt{\det(X_1)}}X_1.
+\end{displaymath}
+This identity is actually gives us a system of linear equations. Thus we have that
+\begin{displaymath}
+X_1=\frac{\pi}{2}\begin{pmatrix}i&i\\ &-i\end{pmatrix}.
+\end{displaymath}
+Similarly we have $X_2=\frac{\pi}{2}\begin{pmatrix}i&\\ &-i\end{pmatrix}$.
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.1.2 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.3.1 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.3.2 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.5.1 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\begin{problem}[Exercise 8.5.2 (0 pts)]
+\end{problem}
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\begin{proof}[Solution]
+\color{black}
+\end{proof}
+\end{adjustwidth}
+
+\end{document} 
