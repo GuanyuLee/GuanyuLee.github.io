@@ -1,0 +1,681 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{changepage}
+\usepackage{esint}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{inputenc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{marvosym}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{tikz-cd}
+
+\title{Arithmetic \& Algebraic Geometry}
+\author{Ann Arbor, Michigan\\ Notes Taken by Guanyu Li\\ gl479 at cornell.edu}
+\date{August 5-9, 2019}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+\theoremstyle{definition}
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem*{definition}{Definition}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{cor}{Corollary}[theorem]
+
+\begin{document}
+
+\maketitle
+\begin{adjustwidth}{0.7cm}{}
+\color{blue}
+\color{black}
+\end{adjustwidth}
+~\par
+
+\section{Aise Johan de Jong: Local Picard groups (August 9th)}
+\begin{abstract}
+We will discuss a local Lefschetz type theorem for Picard groups. In particular, we extend a theorem of Kollar on injectivity of the restriction map to the mixed characteristic case. The proofs use only classical commutative algebra.
+\end{abstract}
+Let $(A,\mathfrak{m})$ be a complete Noetherian ring, with $f\in A$ a nonzerodivisor. We consider $X:=\mathrm{Spec}~A$ with an open set $U:=X-\{\mathfrak{m}\}$, as well as $X_0:=\mathrm{Spec}~A/fA$ with an open set $U_0:=X_0-\{\mathfrak{m}\}$. Our goal is to study the map $\Phi:\mathrm{Pic}(U)\to\mathrm{Pic}(U_0)$.
+\begin{theorem}[SGA2,XI,Lemma 3.16]
+$\Phi$ is injective if
+\begin{enumerate}
+\item for all $u\in U$ closed , $\mathrm{depth}(\mathcal{O}_{U,u})\geq2$;
+\item $\mathrm{depth}(A/fA)\geq3$, i.e. $\mathrm{depth}(A)\geq4$.
+\end{enumerate}
+\end{theorem}
+\begin{theorem}[SGA2,XI,Lemma 3.17]
+$\Phi$ is bijective if
+\begin{enumerate}
+\item for all $u\in U_0$ closed , $\mathrm{depth}(\mathcal{O}_{U,u_0})\geq3$;
+\item $\mathrm{depth}(A/fA)\geq4$, i.e. $\mathrm{depth}(A)\geq5$.
+\item for all $u\in U$ closed, $u\notin U_0$ and $\mathcal{O}_{U,u_0}$ is parafactorial.
+\end{enumerate}
+\end{theorem}
+\begin{definition}
+A noetherian local ring is parafactorial if the local Picard is zero.
+\end{definition}
+\begin{theorem}
+If $A$ is a complete intersection and $\dim~A\geq4$, then $A$ is parafactorial.
+\end{theorem}
+\begin{cor}
+$A$ is a complete intersection and factorial in $\mathrm{codim}~3$, then $A$ is parafactorial.
+\end{cor}
+\begin{theorem}[Kollar]
+Assumptions in 3.16 are too strong.
+\end{theorem}
+The main results are
+\begin{theorem}[0F2A]
+If $\mathrm{depth}(A/fA)\geq2$, then $\Phi$ is injective on torsion.
+\end{theorem}
+\begin{theorem}[0F2A, Kollar's conjecture]
+$\Phi$ is injective if
+\begin{enumerate}
+\item $A$ has (S2),
+\item $\mathrm{depth}(A/fA)\geq2$,
+\item $\dim~A\geq4$.
+\end{enumerate}
+\end{theorem}
+\begin{definition}
+A coherent triple $(\mathscr{F}.\mathscr{F}_0,\alpha)$ is a triple s.t.
+\begin{enumerate}
+\item $\mathscr{F}$ is coherent $\mathscr{O}_X$ module and $f:\mathscr{F}\to\mathscr{F}$ is injective.
+\item $\mathscr{F}_0$ is coherent $\mathscr{O}_{X_0}$ module.
+\item $\alpha:\mathscr{F}/f\mathscr{F}\to\mathscr{F}_0|_{U_0}$ is an isomorphism.
+\end{enumerate}
+\end{definition}
+An important fact is given a triple $(\mathscr{F}.\mathscr{F}_0,\alpha)$ there exists a coherent $\mathscr{O}_X$ module $\mathscr{F}'$ with $f:\mathscr{F}'\to\mathscr{F}'$ still injective, an isomorphism $\alpha':\mathscr{F}'|_U\to\mathscr{F}$ and a map $\alpha_0':\mathscr{F}'/f\mathscr{F}'\to\mathscr{F}_0|_{U_0}$ s.t. $\alpha\circ(\alpha'\mathrm{mod}~f)=\alpha_0'$. This induces
+\begin{definition}
+\begin{displaymath}
+\chi(\mathscr{F}.\mathscr{F}_0,\alpha)=\mathrm{length}~\mathrm{Coker}~\alpha_0'-\mathrm{length}~\mathrm{Ker}~\alpha_0'
+\end{displaymath}
+is an exact map.
+\end{definition}
+\begin{theorem}
+If $\mathrm{depth}(A)\geq3$ and $(\mathcal{L},\mathcal{L}_0,\lambda)$ is an invertible triple, then $\mathcal{L}\cong\mathscr{O}_U$ if and only if $\chi(\mathcal{L},\mathcal{L}_0,\lambda)=0$.
+\end{theorem}
+\begin{theorem}
+If $(\mathcal{L},\mathcal{L}_0,\lambda)$ is an invertible triple, then
+\begin{displaymath}
+\mathbb{Z}\to\mathbb{Z},m\mapsto\chi((\mathscr{F}.\mathscr{F}_0,\alpha)\otimes(\mathcal{L},\mathcal{L}_0,\lambda)^{\otimes n})
+\end{displaymath}
+is a polynomial of degree less or equal than $\dim~\mathrm{Supp}~\mathscr{F}$.
+\end{theorem}
+These results are important for proving the main results.
+
+\section{H\'el\`ene Esnault: Frobenius invariant Subloci of formal Lie groups of multiplicative type over an l-adic ring, and applications}
+\begin{abstract}
+(All joint with Moritz Kerz.) One application of the understanding of those loci is the Hard Lefschetz theorem in rank 1 in positive characteristic. Another one is on the codimension of the cohomological subloci defined by the Mellin transform in special towers.
+We shall review Deligne¡¯s purity concept and the application of L. Lafforgue¡¯s theorem to purity, then the notions defined in the title, then the method to find torsion points of those loci, then the applications.
+\end{abstract}
+
+\subsection{August 7th}
+\begin{theorem}[Hard Lefschetz]
+Suppose $X$ is a $d$-dimensional projective smooth variety over field $F$, with a chern class $eta$ of an ample line bundle.
+\begin{enumerate}
+\item if $F=\mathbb{C}$, then $\eta\in H^2(X,\mathbb{Z})$ and $H^{-i}(X,\mathbb{C}[d])\cong H^i(X,\mathbb{C}[d])$.
+\item if $F=\mathbb{F}_p$, then $\eta\in H^2(X,\mathbb{Z}_l)$ and $H^{-i}(X,\mathbb{Q}_l[d])\cong H^i(X,\mathbb{Q}_l[d])$.
+\end{enumerate}
+\end{theorem}
+
+\section{Wei Ho: Hessian constructions for genus one curves (August 9th)}
+\begin{abstract}
+The Hessian of a plane cubic curve is classically described using partial derivatives or polars. In this talk, we will revisit the cubic Hessian and several variants for other models of genus one curves, and highlight arithmetic applications, e.g., relating them to isogenies of a modular curve and constructing families of elliptic curves with isomorphic mod p representations.
+\end{abstract}
+Suppose $k$ is a field, not necessarily algebraically closed, with characteristic not 2,3. Suppose $f$ be a polynomial of degree 3 in 3 variables $x,y,z$, then it cuts out a cubic curve $C\subseteq\mathbb{P}^2$. We have the $3\times3$ Hessian matrix
+\begin{displaymath}
+\begin{pmatrix}
+\frac{\partial^2f}{\partial x^2}&\frac{\partial^2f}{\partial x\partial y}&\frac{\partial^2f}{\partial x\partial z}\\
+\frac{\partial^2f}{\partial x^2}&\frac{\partial^2f}{\partial x\partial y}&\frac{\partial^2f}{\partial x\partial z}\\
+\frac{\partial^2f}{\partial x^2}&\frac{\partial^2f}{\partial x\partial y}&\frac{\partial^2f}{\partial x\partial z}
+\end{pmatrix}
+\end{displaymath}
+We take the determinant $H(C)=H(f)\subseteq\mathbb{P}^2$ then we get the Cayleyian, i.e. the double \'etale cover of the Hessian.
+\begin{theorem}
+The moduli spaces
+\begin{displaymath}
+n_3:=\{\text{genus 1 curve }C\text{ and }\mathrm{deg}\text{ 3 line bundles }L\}
+\end{displaymath}
+and
+\begin{displaymath}
+n_3[2]:=\{\text{nice genus 1 curves }X\text{ and line bundles }L\text{ with degree 3 and }0\neq D\in\mathrm{Jac}(X)[2]\}
+\end{displaymath}
+are birationally equivalent.
+\end{theorem}
+
+\section{Daniel Huybrechts: Algebraic and arithmetic aspects of twistor spaces (August 6th)}
+Goal: suppose $\zeta\to\mathbb{P}^1$ is a twistor space, and $L_1,L_2$ are two fibers, we want to know the relation of the fibers.
+
+\section{Daniel Krashen: Field patching, local-global principles and rationality (August 5th)}
+\begin{abstract}
+This talk will present a brief survey of local-global principles for torsors for algebraic groups over higher dimensional arithmetic fields via field patching techniques. In particular, I'll discuss new work which makes a connection between obstructions to such local-global principles and obstructions to rationality of algebraic groups.\par
+\href{https://arxiv.org/abs/1906.10672}{reference}
+\end{abstract}
+Goal: Understanding the arithmetical fields as structure of algebraic objects. Suspicion: if $K$ is a number field, $X/K$ is a curve on the plane $\Omega_K$, $F=K(X)$, $G$ is a linear algebraic group then $\mathrm{Ker}(H^1(F,G)\to\prod_{v\in\Omega_K}H^1(K_v(X),G))$. Evidence: $E/K$ is an elliptic curve, $G=PGL_n$, then $\mathrm{Ker}()\subseteq\#(K,E)[n]$.\par
+Given a curve $X$ over some complete discrete valuation field, we choose a regular model $\mathscr{X}/\mathcal{O}_K$
+
+\section{Max Lieblich: Topological reconstruction theorems (August 8th)}
+\begin{abstract}
+I will report on joint work in progress with J¨¢nos Koll¨¢r, Martin Olsson, and Will Sawin on topological reconstruction theorems for algebraic varieties.
+\end{abstract}
+Classical question: Do AG have any good complete invariants (for varieties)? Extracts: $X_{\text{\'et}},X(\mathbb{C})^{top},|X|,k(X),H^*(X,\mathbb{Z})$ with hodge structures, etc.
+\begin{theorem}
+Suppose $X$ is a scheme of dimension at least 2 s.t.
+\begin{enumerate}
+\item $\Gamma(X,\mathscr{O}_X)$ is a field.
+\item $X\to\mathrm{Spec}~\Gamma(X,\mathscr{O}_X)$ is proper and geometrically integral.
+\item $X$ is normal.
+\end{enumerate}
+Then $X$ is determined uniquely by the pair $(|X|,\sim)$ where $|X|$ is the base topological space and $\sim$ denotes the linear equivalence of the divisors.
+\end{theorem}
+\begin{theorem}
+In the setting of previous theorem, and furthermore if $\Gamma(X,\mathscr{O}_X)$ and $\Gamma(Y,\mathscr{O}_Y)$ are uncountably algebraically closed of characteristic 0, then any homeomorphism from $X$ to $Y$ is from an isomorphism of $X$ to $Y$ as schemes.
+\end{theorem}
+\begin{cor}
+If the setting of the second theorem, $X$ is uniquely determined by $|X|$, or $X_{\text{\'et}}$, or the category of constructible $A$-modules.
+\end{cor}
+\begin{cor}
+Given a smooth complex projective $X$ of dimension $>1$, the following are determined by $|X|$: $\pi_{\text{\'et}}$, the Betti numbers, the cohomology ring, the absolute Hodge structure, $D(X)$, $\mathrm{Coh}(X)$.
+\end{cor}
+But these fail in characteristic $p$. So the natural conjecture is
+\begin{conj}
+\begin{displaymath}
+\mathrm{Iso}(X^{\text{perf}},Y^{\text{perf}})\to\mathrm{Homeo}(|X|,|Y|).
+\end{displaymath}
+\end{conj}
+\begin{theorem}
+If $X$ is a proper normal variety over $\mathbb{C}$, then $|X|$ determines $\sim$.
+\end{theorem}
+In 1989, Voevodsky proved that if $X$ is a normal variety over a field $F\supseteq\mathbb{Q}$ of finitely generated, then $X$ is determined by $X_{\text{\'et}}$. There was a program "birational anabelian geometry" related to these reconstruction.\par
+In the setting very beginning, let $\tau(X):=(|X|,\sim)$, if $U\subseteq X$ open, then we have
+\begin{displaymath}
+\mathbb{Z}\cdot B\to\mathrm{Cl}(X)\to\mathrm{Cl}(U)\to0.
+\end{displaymath}
+For a fixed divisor $D\subseteq X$, the following are determined by $\tau(X)$: Cartierness of $D$, Ampleness of $D$, BPFness of $D$, quasi-projectivity of $X$. To prove theorem I, we reduce th the projective case $X$ and $Y$, $\varphi:\tau(X)\cong\tau(Y)$. Assume there exist $\mathscr{O}_X(1)$, $\mathscr{O}_Y(1)$ very ample s.t. $\varphi(\mathscr{O}_X(1))=\mathscr{O}_Y(1)$, then $\varphi$ induces $\varphi_n:|\mathscr{O}_X(1)|\to|\mathscr{O}_Y(1)|$. If we can prove $\varphi_n$ are linear isomorphism, we would be very closed to have an isomorphism $\bigoplus\Gamma(X,\mathscr{O}_X(n))\to\bigoplus\Gamma(Y,\mathscr{O}_Y(n))$.\par
+We improve the fundamental theorem of projective geometry: suppose $K,L$ are fields, a morphism $\mathbb{P}_K(V)\to\mathbb{P}_L(W)$ preserves Zariski opens in $Gr(1,\mathbb{P}_K(V))$ and $Gr(1,\mathbb{P}_L(W))$, then $\varphi$ is linear at all points of $\mathbb{P}_K(V)$ swept out by special lines.
+
+\section{Jacob Lurie, Tamagawa Numbers in the Function Field Case}
+\begin{abstract}
+Let G be a connected semisimple algebraic group over a global field K, and let A denote the ring of adeles of K. Tamagawa observed that the locally compact group G(A) is equipped with a canonical translation-invariant measure. A celebrated conjecture of Weil asserts that if G is simply connected, then the measure of the quotient space G(A)/G(K) is equal to 1. When K is a number field, this conjecture was proven Kottwitz (following earlier work of Langlands and Lai). In these talks, I'll discuss joint work with Dennis Gaitsgory about the function field case, exploiting ideas from algebraic topology.
+\end{abstract}
+\subsection{August 5th}
+First take $K=\mathbb{Q}$ and $G$ is an algebraic group of dimension $d$. The adele ring
+\begin{displaymath}
+\mathbb{A}=\mathbb{R}\times\prod_{p}^{res}\mathbb{Q}_p\subseteq\mathbb{R}\times\prod_{p}\mathbb{Q}_p
+\end{displaymath}
+which is locally compact. Then we can talk about $G(\mathbb{A})$, which contains $G(\mathbb{Q})$ where $G(\mathbb{A})$ is locally compact and $G(\mathbb{Q})$ is discrete.\par
+$G(\mathbb{A})=G(\mathbb{R})\times\prod_{p}^{res}G(\mathbb{Q}_p)$ has a left canonical invariant measure which is callen Tamagawa measure. $G(\mathbb{R})$ is a Lie group, let $V_\mathbb{R}$ be the space of translation invariant $d$-forms on $G$. Let $V_\mathbb{Q}\subseteq V_\mathbb{R}$ be the algebraic differential forms defined over $\mathbb{Q}$. So for one $\omega\in V_\mathbb{Q}$ we have a Haar measure $\mu_{\omega,\mathbb{R}}$ on $V_\mathbb{R}$. $\omega$ also determines a Haar measure $\mu_{\omega,\mathbb{Q}_p}$ on $G(\mathbb{Q})$, so we have a construction
+\begin{displaymath}
+\mu:=\mu_{\omega,\mathbb{R}}\times\prod_{p}\mu_{\omega,\mathbb{Q}_p}.
+\end{displaymath}
+\begin{conj}[Weil]
+If $G$ is semisimple and simply connected, then
+\begin{displaymath}
+\mu(G(\mathbb{A})/G(\mathbb{R}))=1.
+\end{displaymath}
+\end{conj}
+For example, take $V=\{\text{rational }\}$. This conjecture was proved by Kottwits following Langlans, Lai.\par
+More generally, we can do the same things on a global field. If $K/\mathbb{Q}$ is a finite extension, $G$ is some algebraic group over $K$. $G(K)\subseteq G(\mathbb{A}_K)$, $H:=\mathrm{Res}^K_G(???)$.\par
+In the rest of this lecture, $x\in X$ is the closed point of a smooth projective connected variety over $\mathbb{F}_q$, $K_X$ is the function field of $X$, $\kappa(x)$ is the residue field, $\mathcal{O}_x$ is the complete local ring at $x$, $=\kappa(x)$, $K_x$ is the fraction field of $\mathcal{O}_x$. We have
+\begin{displaymath}
+K_X\subseteq\mathbb{A}_X=\prod_{x\in X}^{res}K_x.
+\end{displaymath}
+Suppose $G_0$ is an algebraic group over $K_X$, then $G(K_X)\subseteq G(\mathbb{A}_X)$. To define the Tamagawa measure, we choose a translation invariant top form $\omega$ in $G_0$, then this gives a measure $\mu_{\omega,x}$. Then we want to choose an integral model of $G_0$. Suppose $G\to X$ is a smooth affine group scheme with connected fibers. Then
+\begin{displaymath}
+G(K_x)\supseteq G(\mathcal{O}_x)\to G(\kappa(x))
+\end{displaymath}
+where the latter ????\par
+
+For most of $x\in X$, $\omega$ has no zeros or poles at $x$. In this case,
+\begin{displaymath}
+\mu_{\omega,x}(G(\mathcal{O}_x))=\frac{|\kappa(x)|}{|\kappa(x)|^d}.
+\end{displaymath}
+This was not quite right, since there are still finitely many point where $\omega$ has zeros or poles. So we consider $\prod_{x\in X}G(\mathcal{O}_x)$ acting on $G(\mathbb{A}_X)/G(K_X)$. Then we have
+\begin{displaymath}
+\{\text{principle $G$ bundle on $X$}\}/\text{isomorphisms}\simeq\frac{G(\mathbb{A}_X)/G(K_X)}{\prod_{x\in X}G(\mathcal{O}_x)}.
+\end{displaymath}
+
+\begin{theorem}
+Let $\mathcal{P}$ be a $G$-bundle on $X$, assume $G_0$ is simply connected, then
+\begin{enumerate}
+\item (Hurder) $\mathcal{P}$ is trivial at the generic point of $X$.
+\item (Larey) $\mathcal{P}$ is trivial at each $\mathrm{Spec}~\mathcal{O}_x$.
+\end{enumerate}
+\end{theorem}
+We can choose some trivialization $\mathcal{P}|_{\mathrm{Spce}~K_X}$ and $\mathcal{P}|_{\mathrm{Spce}~\mathcal{O}_x}$, and we differ $\mathrm{Spce}~K_X$ by an element of $G(K_X)$. Therefore, we have a naive guess
+\begin{displaymath}
+\mu(G(\mathbb{A}_X)/G(K_X))=\left(\#\text{ of $G$ bundles on $X$}\right)q^{-D}\prod_{x\in X}^{res}\frac{|G(\kappa(x))|}{|\kappa(x)|^d}.
+\end{displaymath}
+This is true only for when the group action is free. We need to know the multiplicity. The correct conjecture is
+\begin{displaymath}
+\mu(G(\mathbb{A}_X)/G(K_X))=\left(\sum_{\mathcal{P}\text{ a $G$ bundle on }X}|\frac{1}{\mathrm{Aut}(\mathcal{P})}|\right)q^{-D}\prod_{x\in X}^{res}\frac{|G(\kappa(x))|}{|\kappa(x)|^d}.
+\end{displaymath}
+Hence we can restate the Weil's conjecture
+\begin{displaymath}
+\frac{\sum_{\mathcal{P}}\frac{1}{|\mathrm{Aut}(\mathcal{P})|}}{q^D}=\prod_{x\in X}\frac{|\kappa(x)|^d}{|G(\kappa(x))|}.
+\end{displaymath}
+Then we consider a stack $\mathrm{Bun}_G(X)$, sending $R$ to $G$-bundles over $X\times_{\mathrm{Spec}~\mathbb{F}_q}\mathrm{Spec}~R$. Then we have that $\sum_{\mathcal{P}}\frac{1}{|\mathrm{Aut}(\mathcal{P})|}=|\mathrm{Bun}_G(X)(\mathbb{F}_q)|$. For each $x\in X$, we can also consider $\mathrm{Bun}_G(\{x\})=\mathrm{Bun}(\mathrm{Res}_{\mathbb{F}_q}^{\kappa(x)}G_x)$. We have $|\mathrm{Bun}_G(\{x\})(\mathbb{F}_q)|=\frac{1}{G(\kappa(x))}$, so we can restate the Weil's conjecture
+\begin{displaymath}
+\frac{|\mathrm{Bun}_G(X)(\mathbb{F}_q)|}{q^{\dim~\mathrm{Bun}_X(G)}}=\frac{\sum_{\mathcal{P}}\frac{1}{|\mathrm{Aut}(\mathcal{P})|}}{q^D}=\prod_{x\in X}\frac{|\kappa(x)|^d}{|G(\kappa(x))|}=\prod_{x\in X}\frac{|\mathrm{Bun}_G(\{x\})(\mathbb{F}_q)|}{q^{\dim~\mathrm{Bun}_{\{x\}}(G)}}.
+\end{displaymath}
+
+\subsection{Aug 6th}
+
+Recap: Suppose $X$ be a projective scheme over $\mathrm{Spec}~\mathbb{F}_q$, $G$ is a smooth affine algebraic group with connected fibers, and generically it is semisimple simply connected. The Weil conjecture is
+\begin{displaymath}
+\frac{|\mathrm{Bun}_G(X)(\mathbb{F}_q)|}{q^{\dim~\mathrm{Bun}_X(G)}}=\prod_{x\in X}\frac{|\mathrm{Bun}_G(\{x\})(\mathbb{F}_q)|}{q^{\dim~\mathrm{Bun}_{\{x\}}(G)}}.
+\end{displaymath}\par
+Recall if $Y$ is an algebraic variety over $\mathbb{F}_q$, there is a formula for $|Y(\mathbb{F}_q)|$, the $\mathbb{F}_q$ points in terms of  \'etale fundamental group of $Y$. This lecture is to count points via $\pi_*(Y)$.\par
+Suppose $k$ be an algebraically closed field of characteristic $p>0$ ($k=\bar{\mathbb{F}_q}$), $l$ is another prime number, $Y$ is a smooth variety over $k$ ($\mathrm{Bun}_G(X)\times_{\mathrm{Spec}~\mathbb{F}_q}\mathrm{Spec}~k$) with base point $y\in Y(k)$. Grothendieck defined the \'etale fundamental group which is a profinite group. We want $\pi_1(Y,y)_l$.\par
+Artin and Mazur had a construction, with a connected algebraic variety, output a simply connected topological space called the \'etale homotopy type of $Y$, denoted by $EHT(Y)$. The construction has properties:
+\begin{enumerate}
+\item Each $\pi_n(EHT(Y))$ is a finitely generated $\mathbb{Z}_l$ module.
+\item $H^*(EHT(Y),\mathbb{F}_l)\cong$
+\end{enumerate}
+Then we can define that
+\begin{displaymath}
+\pi_n(Y):=\pi_n(EHT(Y))
+\end{displaymath}
+which is a finitely generated $\mathbb{Z}_l$-module, and
+\begin{displaymath}
+(\pi_n(Y))_{\mathbb{Q}_l}:=(\pi_n(Y))[\frac{1}{l}],
+\end{displaymath}
+which is a finite dimensional $\mathbb{Q}_l$-vector space. We have the relationship: the bilinear map
+\begin{displaymath}
+H^n(Y,\mathbb{Q}_l)\times\pi_n(Y)_{\mathbb{Q}_l}\to\mathbb{Q}_l,
+\end{displaymath}
+factors through $I\wedge^2\times\pi_n(Y)_{\mathbb{Q}_l}$ with $I=\bigoplus_{n>0}H^n(Y,\mathbb{Q}_l)$.\par
+Special case: If $H^*(Y,\mathbb{Q}_l)\cong$\par
+Examples: (i) $Y=\mathbb{G}_m$, then $H^*_{et}(Y,\mathbb{Q}_l)\cong\mathbb{Q}_l[v]/(v^2)$ with $\deg~v=1$, then the only nontrivial fundamental group is $\pi_1=\mathbb{Q}_l$.\\
+(ii) $Y=SL_n$, with nontrivial at $n=3,5,\cdots,2n-1$.\par
+Here our goal is to compute $|Y_0(\mathbb{F}_q)|$, where $Y_0$ is a variety over $\mathbb{F}_q$. Suppose $Y$ is the base change of $Y_0$ to $k$. We also have $\mathbb{F}_q$ acting on $Y$, then
+\begin{theorem}[Grothendieck-Lefschetz trace formula]
+\begin{displaymath}
+|Y_0(\mathbb{F}_q)|=\sum_{i}(-1)^i\mathrm{Tr}(\mathcal{Q}|H^i_c(Y,\mathbb{Q}_l)|).
+\end{displaymath}
+\end{theorem}
+Suppose $Y$ is smooth, then we have the Poincare duality, there is a perfect pairing $H^i_c(Y,\mathbb{Q}_l)\times H^{2d-i}(Y,\mathbb{Q}_l)\to H^{2d}(Y,\mathbb{Q}_l)\cong\mathbb{Q}_l(-d)$, the upshot is
+\begin{displaymath}
+Tr(\mathcal{Q}|H^i_c(Y,\mathbb{Q}_l))=q^dTr(\mathcal{Q}^{-1}|H^{2d-i}(Y,\mathbb{Q}_l)).
+\end{displaymath}
+So the dual version of Grothendieck-Lefschetz trace formula is
+\begin{displaymath}
+\frac{|Y_0(\mathbb{F}_q)|}{q^d}=\sum_{i}(-1)^i\mathrm{Tr}(\mathcal{Q}|H^i(Y,\mathbb{Q}_l)|).
+\end{displaymath}
+Assume $H^*(Y,\mathbb{Q}_l)\cong\wedge^*(V)$, and $\mathbb{Q}_l\hookrightarrow\mathbb{C}$. Set $V=I/I^2$ has an action of Frobenius with generalized eigenvalues $\lambda_1,\cdots,\lambda_r$. On $H^*(Y,\mathbb{Q}_l)$, $\mathcal{Q}^{-1}$ has generalized eigenvalues $\lambda_{i_1},\cdots,\lambda_{i_m}$, then
+\begin{displaymath}
+\frac{|Y_0(\mathbb{F}_q)|}{q^d}=\sum_{1\leq i_1<\cdots<i_m\leq r}(-1^m)\lambda_{i_1}\cdots\lambda_{i_m}
+\end{displaymath}
+Let $Y$ be any algebraic group $G$ defined over $\mathbb{F}_q$, we have the Steinbergs formula
+\begin{displaymath}
+|G(\mathbb{F}_q)|=q^{\dim~G}(\det(1-\mathcal{Q}|_{\pi_*(\bar{G})_{\mathbb{Q}_l}})).
+\end{displaymath}
+In general, there is spectral sequence
+\begin{displaymath}
+\mathrm{Sym}_{gr}^*(\pi_*(Y)_{\mathbb{Q}_l}^\vee)\to H^*(Y,\mathbb{Q}_l),
+\end{displaymath}
+modolo convergence we conclude that
+\begin{displaymath}
+\frac{|Y_0(\mathbb{F}_q)|}{q^d}=\frac{\det(1-\mathcal{Q}|_{\pi_{all}(Y)_{\mathbb{Q}_l}})}{\det(1-\mathcal{Q}|_{\pi_{even}(Y)_{\mathbb{Q}_l}})}
+\end{displaymath}
+Example: $Y_0:=B\bar{G}$, by some topology we should have
+\begin{displaymath}
+\pi_*(B\bar{G})_{\mathbb{Q}_l}=\pi_{*-1}(\bar{G})_{\mathbb{Q}_l}=\frac{|G(\mathbb{F}_q|^{-1}}{q^{-d}}=\det(1-\mathcal{Q}|_{\pi_*(\bar{G})_{\mathbb{Q}_l}})
+\end{displaymath}
+and by Weil's conjecture we have
+\begin{displaymath}
+\det(1-\mathcal{Q}|_{\pi_*(B\bar{G})_{\mathbb{Q}_l}})^{-1}=\frac{|BG(\mathbb{F}_q)|}{q^{\dim~BG}}.
+\end{displaymath}
+
+\subsection{August 7th}
+
+Recall a construction. Let $X$ be an algebraic variety over $\mathbb{F}_q$, $\mathscr{F}$ be a constructible $l$-adic sheaf on $X$. Then
+\begin{displaymath}
+L(\mathscr{F},s):=\prod_{x\in X}\det(1-|\kappa(x)|^{-s}\mathcal{Q}_x|_{\mathscr{F}_x})^{-1}=\prod_{n\geq0}\det(1-q^{-s}\mathcal{Q}|H^n(X,\mathscr{F}))^{(-1)^{n+1}}.
+\end{displaymath}
+More generally, if $\mathscr{F}\in D^b_c(X)$, then
+\begin{align*}
+L(\mathscr{F},s)=\prod_{n\geq0}cH(1-q^{-s}\mathcal{Q}|H^n(X,\mathscr{F}))^{(-1)^{n+1}}=\prod_{n\in\mathbb{Z}}\prod_{x\in X}\det(1-|\kappa(x)|^{-s}\mathcal{Q}_x|...)^{-1}
+\end{align*}
+We want the evaluation of $L$ functions at $s=0$, then
+\begin{equation}\label{JL}
+\det(1-\mathcal{Q}|H_c^*(X\times_{\mathrm{Spec}~\mathbb{F}_q}\mathrm{Spec}~\bar{\mathbb{F}_q},\mathscr{F})))^{-1}=L(\mathscr{F},0)=\prod_{x\in X}\det(1-\mathcal{Q}|H^*(\mathscr{F}_x))^{-1}.
+\end{equation}
+Recall if $k=\bar{k}$ is a field and $Y$ is a smooth stack over $\mathrm{Spec}~k$, $H^0(Y,\mathbb{F}_l)=0$, $H^i(Y,\mathbb{Q}_l)$ is of finite dimension, then $\pi_*(Y)_{\mathbb{Q}_l}$ is a finite dimensional $\mathbb{Q}_l$ vector space.\par
+More generally say, $Y\to X$ satisfying some reasonable conditions, we can construct an object $\mathscr{F}_{Y/X}\in D^b_c(X)$ with three features:
+\begin{enumerate}
+\item For fixed $X$, $\mathscr{F}_{Y/X}$ is functorial in $Y$.
+\item When $X=\mathrm{Spec}~k$, then $H^i(\mathscr{F}_{Y/X})=\pi_{-i}(Y)_{\mathbb{Q}_l}$.
+\item Given a pullback diagram, $f:Y'\to X$, $Y\to X$, then $\mathscr{F}_{Y'/X'}\cong f^*\mathscr{F}_{Y/X}$.
+\end{enumerate}\par
+Suppose $Y=BG\to X$, where $BG=\{x\in X~\text{plus some }G_x\text{-torsor}\}$, and $\mathscr{F}:=\mathscr{F}_{Y/X}$, then $H^n(\mathscr{F})=\pi_n(BG_x)=\pi_{n-1}(G_x)$. Notice that $H^i(\mathscr{F})$ are lisse on locus where $G$ is semisimple. Hence generic fibers of $H^{-n}(\mathscr{F})=\pi_{n-1}(G\times_X\mathrm{Spec}~\bar{k_X})$. By Steinberg, the RHS of \ref{JL} is exactly $\frac{|BG(\mathbb{F}_q)|}{q^{\dim~BG}}$.\par
+Then the question is what does $H^*(X;\mathscr{F}_{Y/X})$ look like.
+\begin{center}
+\begin{tikzcd}
+\mathrm{Bun}_G(X) \arrow{d}{}&\mathrm{Bun}_G(X)\times_{\mathrm{Spec}~\mathbb{F}_q}X\arrow{d}{}\arrow{l}{}\arrow{r}{}&BG\arrow{d}{}\\
+\mathrm{Spec}~\mathbb{F}_q &X\arrow{l}{f}\arrow{r}{}&X
+\end{tikzcd}
+\end{center}
+So we have
+\begin{displaymath}
+f_*\mathscr{F}_{\mathrm{Bun}_G(X)/\mathrm{Spec}~\mathbb{F}_q}\cong\mathscr{F}_{\mathrm{Bun}_G(X)\times X/X}\to\mathscr{F}_{BG/X}.
+\end{displaymath}
+We look at $\mathscr{F}_{\mathrm{Bun}_G(X)/\mathrm{Spec}~\mathbb{F}_q}\to Rf_*\mathscr{F}_{Y/X}$.
+\begin{theorem}
+The map $\mathscr{F}_{\mathrm{Bun}_G(X)/\mathrm{Spec}~\mathbb{F}_q}\to Rf_*\mathscr{F}_{Y/X}$ is invertible.
+\end{theorem}
+But also
+\begin{displaymath}
+L(\mathscr{F}_{Y/X},0)=\det(1-\varphi|\pi_*(\mathrm{Bun}_G(X)\times_{\mathrm{Spec}~\mathbb{F}_q}\mathrm{Spec}~\bar{\mathbb{F}_q}))=RHS
+\end{displaymath}
+where the last equality is the trace formula. The trace formula for $Bun_G(X)$ is a theorem of Behrend when $G$ is everywhere semisimple.
+
+\section{Davesh Maulik: Topology of Higgs moduli spaces via abelian surfaces (August 5th)}
+\begin{abstract}
+In this talk, we study cases of the $P=W$ conjecture for Higgs bundles on a curve, using techniques from compact hyperk\"ahler geometry. This is joint work in progress with Mark de Cataldo and Junliang Shen.
+\end{abstract}
+Setup: let $C$ be a smooth projective curve over $\mathbb{C}$ with genus $g\geq2$. Suppose a moduli problem
+\begin{displaymath}
+\mathcal{M}_{\text{Higgs}}=\{\text{vector bundle }E\text{ over }C\text{ with rank $r$ and degree $d$.}\}
+\end{displaymath}
+where $E\xrightarrow{\varphi}E\otimes K_\mathbb{C}$ has stability. The functor sends a Higgs bundle to pure 1-dimensional sheaf on $T^*C$ with proper support
+\begin{displaymath}
+[\mathrm{supp}~\mathcal{E}]=r[C].
+\end{displaymath}
+For smooth variety with holomorphic symplectic, we have another space, which is the twisted character variety of $C$:
+\begin{displaymath}
+\mathcal{M}_{\text{Betti}}=\{\text{smooth affine varieties }A_1,\cdots,A_g,B_1,\cdots,B_g,\text{s.t. }\prod[A_i,B_i]=e^{2\pi id/r}\}//GL_r(\mathbb{C})
+\end{displaymath}\par
+The talk starts with non-abelian Hodge theory, i.e. there is a diffeomorphism
+\begin{displaymath}
+\mathcal{M}_{\text{Higgs}}\simeq\mathcal{M}_{\text{Betti}}.
+\end{displaymath}
+For example, when $r=1$, we have
+\begin{displaymath}
+\mathrm{Pic}_d(\mathbb{C})\times\mathbb{C}^g\xrightarrow{\sim}(\mathbb{C}^*)^{2g},
+\end{displaymath}
+and so
+\begin{displaymath}
+H^*(\mathcal{M}_{\text{Higgs}})\cong H^*(\mathcal{M}_{\text{Betti}}).
+\end{displaymath}
+\begin{conj}[$P=W$]
+$\mathcal{M}_{\text{Betti}}$ carries a mixed Hodge structure
+\begin{displaymath}
+W_KH^*\subseteq H^*,
+\end{displaymath}
+then what is the meaning of $W_K$ on $H^*(\mathcal{M}_{\text{Higgs}})$?
+\end{conj}\par
+We need some extra structure. Suppose we have the Hitchin map $\mathcal{M}_{\text{Higgs}}\xrightarrow{\pi}\mathbb{A}^N$, and hence use $\pi$ to define a filtration $\mathcal{E}\mapsto\mathrm{supp}~\mathcal{E}$, whose fiber is $\mathrm{Pic}_d(C)$. For example suppose $X\xrightarrow{\pi}Y$ is a proper filtration. We have a decomposition theorem
+\begin{displaymath}
+R\pi_*\mathbb{Q}_X[\dim~X-a]\cong\bigoplus_{k=0}^{2a}P_k[-k],
+\end{displaymath}
+where the right hand side preserve the sheaf on $Y$. If $X_y$ is smooth, then $P_k|_y=H^k(X_y)[-]$. Hence we define
+\begin{displaymath}
+P_kH^d(X)=\mathrm{Im}(H^{d-(\dim~X-a)}(Y,\bigoplus_{i\leq k}P_i[-i])\to H^d(X)).
+\end{displaymath}
+In our case, $P_kH^d(X)=\mathrm{Ker}(H^d(X)\to H^d(\pi^{-1}(Y')))$ (which is hard by dC, Mig) where $Y'$ is a generic plane of dimension $d-k-1$.
+\begin{conj}
+\begin{displaymath}
+P_kH^*(\mathcal{M}_{\text{Higgs}})=W_{2k}H^*(\mathcal{M}_{\text{Betti}})=W_{2k+1}.
+\end{displaymath}
+\end{conj}
+We already have
+\begin{enumerate}
+\item all genus for $r=2$.
+\item Hard Lefschetz for $gr_WH^*$ by Mellit.
+\end{enumerate}\par
+The main results are
+\begin{theorem}
+$P=W$ holds for $g=2$ curves for all rank $r$, degree $d$, with $(r,d)=1$. When $g>2$, for some $E\to C\times\mathcal{M}_{\text{Higgs}}$, twist: for any $\alpha\in H^2(C)\oplus H^2(\mathcal{M}_{\text{Higgs}})$, let
+\begin{displaymath}
+ch^\alpha(E)=ch(E)\cup e^\alpha\in H^*(C)\oplus H^*(\mathcal{M}_{\text{Higgs}}).
+\end{displaymath}
+Pick $\alpha$ s.t. $ch^\alpha_1(E)\in H^1\oplus H^1$. For any $\gamma\in H^*(C)$, $ch(k,\gamma)=\int_{\gamma}ch_k^\alpha(E)\in H^*(\mathcal{M})$
+\end{theorem}
+\begin{proof}[Idea of the proof]
+
+\end{proof}
+
+\section{Martin Olsson: Degenerations of varieties and sections of vector bundles on moduli spaces (August 8th)}
+\begin{abstract}
+I will explain some observations and examples illustrating how one can use stack-theoretic techniques to construct canonical sections of vector bundles in formal neighborhoods of boundary points in moduli with large stabilizer groups. This is related to Mumford's classical theory of the theta group for abelian varieties and algebraic theta functions.
+\end{abstract}
+
+\section{Bjorn Poonen: The local-global principle for stacky curves (August 5th)}
+\begin{abstract}
+For smooth projective curves of genus g over a number field,  the local-global principle holds when g=0 and can fail for g=1, as has been known since the 1940s.  Stacky curves, however, can have fractional genus. We construct stacky curves of genus 1/2 that violate the local-global principle, and show that 1/2 cannot be reduced.  This is joint work with Manjul Bhargava.
+\end{abstract}
+Local-global principle: fix some genus $g$, if a smooth projective geometrically integral curve $X$ of genus $g$ over a number field $k$, has a $k_v$ point for every place $v$, must it have a $k$-point?
+\begin{enumerate}
+\item Yes, if $g=0$.
+\item No, if $g\geq1$. E.g. $X:2y^2=1-17x^4$.
+\end{enumerate}
+We want to ask
+\begin{enumerate}
+\item What if $X$ is a stack and $0<g<1$?
+\item What is the smallest $g$ for which the local-global principle fails?
+\end{enumerate}\par
+Root Stacks: Problem: given a scheme $V$, an effective Cartier divisor, $n\in\mathbb{N}$, how can we modify $V$ so that we can replace $D$ by $\frac{1}{n}D$? The solution is to assume $V=\mathrm{Spec}~A$, $D$ is principle workably, choose $f\in A$ s.t. $D=(f)$, then
+\begin{displaymath}
+X:=[\mathrm{Spec}~A[y]/(y^n-f)/\mu_n].
+\end{displaymath}\par
+Suppose $k$ is algebraically closed field of characteristic 0, we define a stacky curve over $k$ is a smooth irreducible 1 dimensional Deligne-Munford stack $X$ containing a nonempty open substack isomorphic to a scheme. Fact is that $X$ is a smooth integral curve over $X_{\mathrm{curve}}$ with $P_1,\cdots,P_n$ replaced by $\frac{1}{e_1}P_1,\cdots,\frac{1}{e_n}P_n$.\par
+Next we define Euler characteristic
+\begin{displaymath}
+\chi:=\chi_{\mathrm{curve}}-\sum_{i=1}^{n}1+\sum_{i=1}^{n}\frac{1}{e_1}
+\end{displaymath}
+and genus to be $2-2g=\chi$. If $k$ is not algebraically closed, a stacky curve over $k$ is some algebraic stack $X$ s.t. $X_{\bar{k}}:=X\times\mathrm{Spec}~\bar{k}$ is a stacky curve.
+\begin{displaymath}
+X(A):=\{\text{morphisms} \mathrm{Spec}~A\to X\}/\text{isomorphisms}.
+\end{displaymath}
+Notice that a stacky curve of genus 0 has $k$-point if and only if the coarse space has a $k$-point. So we want to study the integral points.\par
+Example: pick three positive natural number $p,q,r$ and let
+\begin{displaymath}
+S=\mathrm{Spec}\frac{\mathbb{Z}[x,y,z]}{x^p+y^q-z^r}-{(0,0,0)}\subseteq\mathbb{A}^3,
+\end{displaymath}
+and $\mathbb{G}_m^3$ has an action on it. Then
+\begin{displaymath}
+S(\mathbb{Z})=\{\text{gcd 1 integer solutions to }x^p+y^q-z^r=0\}.
+\end{displaymath}
+Let $H$ be the subgroup of $\mathbb{G}_m^3$ preserving $S$, which leads to a fact $S(\mathbb{Z})$ is
+\begin{enumerate}
+\item finite if $\chi<0$;
+\item infinite if $\chi>0$.
+\end{enumerate}\par
+Counterexample of genus $\frac{1}{2}$: if $p,q,r\equiv7\pmod{8}$ s.t. $\left(\frac{p}{q}\right)=\left(\frac{p}{r}\right)=\left(\frac{r}{q}\right)=1$, $f(x,y)=ax^2+bxy+cy^2$ is of discriminant $-pqr$ and $\left(\frac{a}{q}\right)=1$, $\left(\frac{a}{p}\right)=\left(\frac{a}{r}\right)=-1$. Let $Y=\mathrm{Proj}\frac{\mathbb{Z}[x,y,z]}{z^2-f(x,y)}$ with a $\mu_2$ action ($\lambda$ acting on $(x,y,z)\mapsto(x,y,\lambda z)$), and finally let $X:=[Y/\mu_2]$, (E.g. $p=7, q=47, r=31$.) then
+\begin{enumerate}
+\item $\chi_X=1$, $g=\frac{1}{2}$.
+\item $X(\mathbb{Z}_l)\neq\emptyset$ for all $l$, hence $X(\mathbb{R})\neq\emptyset$.
+\item $X(\mathbb{Z})=\emptyset$
+\end{enumerate}\par
+\begin{theorem}[Local-global principle for $\chi>1$]
+Suppose $k$ is a finite field over $\mathbb{Q}$, $S$ is a finite set of places of $k$ containing the Archimedean places, $\mathcal{O}=\mathcal{O}_{k,S}$, $k_v:=$ the completion of $k$ at $v$, and $\mathcal{O}_v$ is the valuation ring of $k$ if $v\notin S$ and $k_v$ if $v\in S$. Then $X$ is a separated finite type algebraic (Artin) stack over $\mathrm{Spec}~\mathcal{O}$ s.t.
+\begin{enumerate}
+\item $X_{\bar{k}}$ is a stacky curve with $\chi>1$.
+\item If $X(\mathcal{O}_v)\neq\emptyset$ for every $v$, then $X(\mathcal{O})$ is not empty.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Sketch of the proof]
+For simplicity, suppose $\mathcal{O}=\mathbb{Z}$. $\chi>1$ means that $X_\mathbb{Q}$ is some smooth proper $\mathcal{O}$-curve ($X_{\text{curve}}$) of genus 0 and with at most 1 stacky point. $X(\mathbb{Z}_p)\neq\emptyset$ for all $p$ implies $X_{\text{curve}}(\mathbb{Z}_p)=X_{\text{curve}}(\mathbb{Q}_p)\neq\emptyset$ for all $p$, implying $X_{\text{curve}}\simeq\mathbb{P}_\mathbb{Q}^1$, $X_\mathbb{R}\supseteq\mathbb{A}_\mathbb{R}^1$.\par
+Hence $X_{\mathbb{Z}[\frac{1}{N}]}$ contains $\mathbb{A}_{\mathbb{Z}[\frac{1}{N}]}$ for some $N$. Again for simplicity suppose $N=p$ for some prime number. Thus $X(\mathbb{Z}_p)\neq\emptyset$ implies $X$ has many $\mathbb{Z}_p$-points (*), the subset $X(\mathbb{Z}_p)\subseteq X(\mathbb{Q}_p)$ contains a nonempty open subset $U$ of $\mathbb{A}^1(\mathbb{Q}_p)$. \textbf{By strong approximation}, there exists an $x\in\mathbb{A}^1(\mathbb{Z}[\frac{1}{p}])$ s.t. $x\in U$, then $x\in X(\mathbb{Z}[\frac{1}{p}])\cap X(\mathbb{Z})$, and (*) tells us $x\in X(\mathbb{Z})$.
+\end{proof}
+
+\section{Rachel Pries: Infinite clutching systems and unlikely intersections with the Newton polygon stratification (August 6th)}
+\begin{abstract}
+Clutching morphisms have been important for proving many results about the moduli space of curves.  In this work, we study clutching systems for moduli spaces of cyclic covers of the projective line and PEL-type Shimura varieties.  We focus on the Kottwitz sets and Newton polygon stratification for the moduli p reduction of these moduli spaces. We prove that the Newton polygon stratification cooperates well with the clutching morphisms under certain compatibility conditions.  As an application, we find infinitely many situations when a conjecture of Oort is true and when the Newton polygon stratification of the moduli space of abelian varieties has an unlikely intersection with the Torelli locus. This is joint work with Li, Mantovan, and Tang.
+\end{abstract}
+Cyclic covers: $X\xrightarrow{\mathbb{Z}/m\mathbb{Z}}\mathbb{CP}^1$, with equation $y^m=\prod_{i=1}^{N}(x-b_i)^{a_i}$ s.t. $0\leq a_i<m$, $\sum a_i\equiv0\pmod{m}$. $\gamma=(m,N,a=(a_1,\cdots,a_N))$ the monodromy datum determines the genus $g$. We have $H^0(X,\Omega^1)\cong\bigoplus_{i=1}^{m-1}L_i$,we also have the signature type $f=(f_1,\cdots,f_{m-1})$ where $f_i=\dim~L_i$. Let $Z_\gamma$ be the Hurwitz space which "is" the subspace of $\bar{\mathcal{M}_g}$ with dimension $N-3$. We also have the Torelli morphism $T:Z_\gamma\to S_\sigma$ the Shiruma vatiery.\par
+First attempt: build singular curve with given Newton polygon $\sigma$ then deform it without changing the Newton polygon. Strategy: part 1: work with Newton polygons in $\mathbb{Z}_\sigma$ that are $\mu$-ordinary.\par
+Set-up: two initial datum $\gamma_i=(m_i,N_i,a_i)$ with $d=\frac{m_2}{m_1}$, let $\kappa:Z_{\gamma_1}\times Z_{\gamma_2}\to\bar{Z_{\gamma_3}}$. We assume that it is admissible, $d\cdot a_1(N)+a_2(1)\equiv0\pmod{m}$, wichi is equivalent to that we can deform to a smooth curve with $\mathbb{Z}/m\mathbb{Z}$ action of type $\gamma_3$.
+
+\section{Karen Smith: Non-Commutative Resolution of Singularities and Frobenius (August 6th)}
+\begin{abstract}
+Consider a finitely generated commutative algebra R over a field K. Roughly speaking, a non-commutative resolution of singularities of Spec R is a (non-commutative) R-algebra A with finite global dimension, meaning that (like a commutative regular local ring), every module over A has a finite projective resolution. Typically, the algebra A has the form End(M) where M is some finitely generated R-module. The existence of a non-commutative resolution for a commutative ring R places strong conditions on R, such as rational singularities. In this talk, we discuss how in prime characteristic, the Frobenius can be used to construct non-commutative resolutions of nice enough rings. We conjecture that for a strongly F-regular ring R, $End(F_*R)$ is a non-commutative resolution of R,  where $F_*R$ denotes R viewed as an R-module via restriction of scalars from Frobenius. We prove this conjecture when R is the coordinate ring of an affine toric variety. We also show that for toric rings, the ring of differential operators D(R) has finite global dimension (joint with Eleonore Faber and Greg Muller).
+\end{abstract}
+We assume our modules are right modules. Define the projective dimension as the length of shortest possible projective resolution. Define the global (homological) dimension of a ring $R$ is the supremum of all projective dimensions of all right \& left modules.
+\begin{theorem}[Hilbert syzygies,1890]
+The global dimension of $R[x_1,\cdots,x_n]$ is $n$.
+\end{theorem}
+\begin{theorem}[Serre, 1955]
+A commutative local ring $R$ has finite global dimension if and only if $R$ is regular.
+\end{theorem}
+The idea is that we can generalize the notion of smoothness to a noncommutative ring.
+\begin{definition}[Van den Bergh]
+Let $R$ be a Noetherian commutative ring, a non-commutative resolution of singularities of $R$ is a ring $\Lambda=\mathrm{End}_RM$ where
+\begin{enumerate}
+\item $M$ is a finitely generated reflexive module.
+\item $\Lambda$ is of finite global dimension.
+\end{enumerate}
+Furthermore, we say $\Lambda$ is crepitant if all simple $\Lambda$ modules have the same projective dimension.
+\end{definition}
+Recall that the classical definition of a resolution of $\mathrm{Spec}~R$ is a proper morphism from a smooth scheme $X\xrightarrow{\pi}\mathrm{Spec}~R$ s.t. it is an isomorphism on a smooth locus of $\mathrm{Spec}~R$. We would like to ask, when does $R$ admit a noncommutative resolution? When can we construct cannonical noncommutative resolution?
+\begin{theorem}
+A normal ring $(R,\mathfrak{m})$ over $k$ with characteristic 0 has a noncommutative resolution only if $\mathrm{Spec}~R$ admits a rational singularities.
+\end{theorem}
+We consider the positive characteristic situation, then we have the Frobenius map $R\xrightarrow{F}R$.
+\begin{theorem}[Kunz, 1964]
+$R$ is regular if the pushforward $R$ module by the Frobenius map $F_*R$ is a flat $R$-module.
+\end{theorem}
+Assume $R$ is $F$-finite, i.e. $F$ is a finite morphism.
+\begin{definition}
+Suppose $R$ is a $F$-finite Noetherian commutative ring, then we say $R$ is $F$-regular if there is some $c\in R$ and some integer $e$ s.t. the map $R\to F_*^eR$ splits as a map of $R$ modules.
+\end{definition}
+Facts:\begin{enumerate}
+\item Regular inplies $F$-regular.
+\item $R\hookrightarrow S$ splits as $R$-modules, then the $F$-regularity of $S$ implies $S$.
+\item If a finite group $G$ acting on $R$, then $R^G$ is $F$-regular.
+\end{enumerate}
+\begin{conj}
+Suppose $(R,\mathfrak{m})$ be a Noetherian $F$-finite, $F$-regular local ring with characteristic $>0$, then $\mathrm{End}_RF_*^eR$ is of finite global dimension.
+\end{conj}
+
+\section{Jason Starr: Symplectic invariants and rational points in positive characteristic (August 6th)}
+\begin{abstract}
+Tsen's Theorem produces a rational point over a function field of a curve for every smooth complete intersection of type $(d_1,...d_c)$ in projective n-space provided the Fano index $i=n-(d_1+...+d_c)$ is positive.  Is there more than one rational point? Zhiyu Tian, Runhong Zong and I prove "weak approximation" by rational points at all places of potentially good reduction if $i>1$ and if the characteristic$ p > max(d_1,...,d_c)$.  This follows from a general theorem proving cohomology vanishing and separable uniruledness of Fano manifolds with cyclic Picard group whenever p is prime to certain Gromov-Witten invariants.\par
+\href{https://arxiv.org/abs/1811.02466}{reference1}
+\href{https://arxiv.org/abs/1907.07041}{reference2}
+\end{abstract}
+Set-up: $k(B)$ the field of rational functions on a smooth, connected, projective curve $B$ over the field $k$. $X$ is the common intersection in $\mathbb{P}_{k(B)}^n$ of $c$ hypersurface of degrees $(d_1,\cdots,d_c)$. The Fano index is $i(X)=n+1-(d_1+\cdots+d_c)$. $X$ is smooth of dimension $n-c$, and $c_1(T_X)=i(X)\cdot c_1(\mathcal{O}_1)$.
+\begin{theorem}[Tsen's]
+For algebraically closed field $k$, if $i(X)>0$ then $\#(X(k(B))>0$.
+\end{theorem}
+Furthermore, if $X$ is singular sometimes $\#(X(k(B))=1$. There are still some questions remaining open: if $X$ is smooth of dimension $n-c$ and $i(X)>0$, is $\#(X(k(B))>1$? Is $\#(X(k(B))$ infinite? Zariski dense? Dense for a finer topology?
+\begin{theorem}[Starr-Tian-Zong]
+For algebraically closed field $k$, if $X$ is a smooth variety over $k$ and $i(X)>0$, $p>\max\{d_1,\cdots,d_c\}$, then $X(k(B))$ satisfies weak approximation at places of potentially good reduction, such reduction are separably rationally connected, and such reduction are separably uniruled by lines.
+\end{theorem}
+The equality $p>\max\{d_1,\cdots,d_c\}$ is approximately sharp.
+\begin{theorem}
+For Fano $X$ over $k(B)$ with $\mathrm{Pic}=\mathbb{Z}$, potentially good reductions of $X$ are separably rationally connected if and only if they are separably uniruled and $h^0(X,\Omega_X^r)=0$ for all $r>0$.
+\end{theorem}
+\begin{definition}
+\begin{enumerate}
+\item We say a variety has a potentially good reduction at $t$ if there exists a tame stacky curve $\mathcal{B}\to\hat{\mathcal{O}}_{\mathcal{B},t}$ and smooth, proper, representable $\mathcal{X}\to\mathbb{B}$ with generic fiber $X\otimes_{k(B)}\mathrm{Frac}(\hat{\mathcal{O}}_{\mathcal{B},t})$.
+\item We say $X$ is weak approximation away from $\Sigma$ if the image of $X(k(B))$ in the adelic points $X(\mathbb{A}_{\mathcal{B},\Sigma})$ is dense.
+\item We say $X$ is separably uniruled if the evaluation map $\mathrm{ev}^1:\mathcal{M}_{0,1}(X)\to X$ is somewhere smooth.
+\item The Uniruling index $u_1(X)$ is the g.c.d. of the degrees of all$\mathrm{ev}^1|_Z:Z\to X$ for every $Z\to\mathcal{M}_{0,1}(X)$ an integral $k(B)$ scheme with $\mathrm{ev}^1|_Z$ dominant and generically finite.
+\item We say $X$ is separably rationally connected if the evaluation morphism $\mathrm{ev}^1:\mathcal{M}_{0,2}(X)\to X\times X$ is somewhere smooth.
+\item The torsor order $\tau(X)$ is the denominator in the decomposition of diagonal.
+\end{enumerate}
+\end{definition}
+
+\section{Lenny Taelman: Derived equivalences of hyperk\"ahler varieties (August 7th)}
+\begin{abstract}
+In this talk we consider auto-equivalences of the bounded derived category D(X) of coherent sheaves on a smooth projective complex variety X. By a result of Orlov, any such auto-equivalence induces an (ungraded) automorphism of the singular cohomology $H(X,\mathbb{Q})$. If X is a K3 surface, then work of Mukai, Orlov, Huybrechts, Macr\`i and Stellari completely describes the image of the map $\rho_X:\mathrm{Aut}~D(X)\to\mathrm{Aut}~(H(X,\mathbb{Q}))$. We will study the image of $\rho_X$ for higher-dimensional hyperk\"ahler varieties. An important tool is a certain Lie algebra acting on H(X, Q), introduced by Verbitsky, Looijenga and Lunts. We show that this Lie algebra is a derived invariant, and use this to study the image of $\rho_X$.
+\end{abstract}
+We assume that all varieties are smooth, projective over $\mathbb{C}$. Let $DX=D^b(\mathrm{Coh}~X)$.
+\begin{theorem}[Orlov, Bondal]
+If the canonical line bundle $\omega_X$ or $\omega_X^{-1}$ is ample, then
+\begin{enumerate}
+\item $DX\simeq DY$ implies $X\cong Y$.
+\item $\mathrm{Aut}(DX)=\mathbb{Z}\times(\mathrm{Aut}(X)\text{semiprod}Pr(X))$.
+\end{enumerate}
+\end{theorem}
+Examples:\begin{enumerate}
+\item Seidel Theorem $\omega_X=\mathcal{O}_X$ with dimension $d$
+\item Birational geometries.
+\end{enumerate}
+\begin{theorem}[Orlov]
+Suppose $\Phi:DX\to DY$ is an equivalence, then there exists a unique $P\in D(X\times Y)$ s.t. $\Phi=\Phi_P$
+\end{theorem}
+
+Looijanga-Luwdig, Vakihilary Lie algebra: Suppose $\dim~X=d$, $\lambda\in H^2(X,\mathbb{Q})$, there exists a unique representation $\varphi_\lambda:sl_2\to\mathrm{End}(H(X,\mathbb{Q}))$
+
+\section{Burt Totaro: Curves, K3 surfaces, Fano 3-folds (August 9th)}
+\begin{abstract}
+Which smooth projective curves are contained in some K3 surface? Which K3 surfaces are contained in some Fano 3-fold? These questions have been studied for about 40 years, with some striking advances in the past year or so.
+\end{abstract}
+\begin{definition}
+A polarized K3 surface $(X,B)$ of degree $2d$ is a K3 surface $X$ with a primitive ample line bundle such that $\int_Xc_1(B)^2=2d$.
+\end{definition}
+Except in special cases, $B$ is very ample and $h^0(X,B)=\frac{B^2+4}{2}$. we also say $(X,B)$ has genus $g$ if $B^2=2g-2$. So $B$ gives an embedding $X\hookrightarrow\mathbb{P}^g$. The moduli space of polarized K3 surface of any genus $g\geq2$ has dimension 19.
+\begin{definition}
+\begin{displaymath}
+\mathcal{K}C_g:=\{(X,C)\mid X\text{ is a K3 surface and }C\subseteq X\text{ a smooth curve of genus }g\}.
+\end{displaymath}
+\end{definition}
+We can compute that $\dim~\mathcal{K}C_g=19+g$. We also have a map $f_g:\mathcal{K}C_g\to\mathcal{M}_g$, mapping $(X,C)\mapsto C$.
+\begin{theorem}[Mukai]
+If $g\leq9$ or $g=11$ then $f_g$ is dominant, but not if $g=10$. Also, $f_g$ is generically finite if $g=11$ or $g\geq13$, but not if $g\geq12$.
+\end{theorem}
+Why $f_{12}$ is not generically finite? It is because there is a Fano 3-fold of genus 12.
+\begin{definition}
+A Fano 3-fold $Y$ with $\mathrm{Pic}(Y)=\mathbb{Z}(-K_Y)$ has genus $g$ ($-K_Y$ is ample) if $(-K_Y)^2=2g-2$.
+\end{definition}
+\begin{theorem}[Iskelaskilch, 1978]
+The possible genus of Fano 3-fold as curve are $2\leq g\leq10$ and $g=12$.
+\end{theorem}
+\begin{theorem}[2017]
+If $g=11$ or $g\geq13$, then $f_g$ is injective at all points $(X,V)$ with $X$ of Picard number 1.
+\end{theorem}
+
+\section{David Treumann: Symplectic, or mirrorical, look at the Fargues-Fontaine curve (August 8th)}
+\begin{abstract}
+Homological mirror symmetry describes Lagrangian Floer theory on a torus in terms of vector bundles on the Tate elliptic curve.  A version of Lekili and Perutz's works "over Z[[t]]", where t is the Novikov parameter. I will review this story and describe a modified form of it, which is joint work with Lekili, where the Floer theory is altered by a locally constant sheaf of rings on the torus.  When the fiber of this sheaf of rings is perfectoid of characteristic p, and the holonomy around one of the circles in the torus is the pth power map, it is possible to specialize to t = 1, and the resulting theory there is described in terms of vector bundles on the equal-characteristic-version of the Fargues-Fontaine curve.
+\end{abstract}
+\begin{definition}
+If $E$ is a local field, there is a scheme
+\begin{displaymath}
+FF(E):=\mathrm{Proj}(E\oplus S_1\oplus S_2\oplus\cdots)
+\end{displaymath}
+called Fargues-Fontaine curve.
+\end{definition}
+
+\section{Chenyang Xu: On moduli of K-stable Fano varieties (August 8th)}
+\begin{abstract}
+Family of Fano varieties usually doesn¡¯t behave well unless extra conditions are posted. Inspired by the Kahler-Einstein problem, we now expect Fano varieties with K-polystability yield a good projective moduli space. In this talk, I will discuss the recent progress, using tools from higher dimensional algebraic geometry, on this problem.\par
+\href{https://arxiv.org/abs/1906.03122}{reference}
+\end{abstract}
+Suppose $X$ is a Fano variety, i.e. $X$ is complete with $K_X^\vee$ is ample.
+\begin{theorem}
+$X$ is semistable, if and only if any valuation $v$ on $K(X)$
+\begin{displaymath}
+\beta(v)=A_X(v)(-K_X)^n-\int\mathrm{Vol}(-K_X-tv)\mathrm{d}t\geq0,
+\end{displaymath}
+if and only if $Y=Cone(X,r-K_X)$ for some $r$.
+\end{theorem}
+\begin{theorem}
+$X$ is uniformly K-stable if and only if $\beta(v)>0$ for any valuation, is K-stable if and only if $\beta(E)>0$ for any divisor.
+\end{theorem}
+\begin{conj}[Yau-Tian-Donaldson]
+If $X$ is of finite automorphism group, then $X$ is K-stable if and only if $X$ has a K\"ahler-Einstein metric.
+\end{conj}
+\begin{theorem}
+Fix $n\in\mathbb{N}$ and $V\in\mathbb{Q}_{>0}$, then all K-semistable Fano varieties of dimension $n$ with volume $V$ is an Artin stack.
+\end{theorem}
+Some papers imply that the Artin stack $\mathcal{M}_{n,V}^{KSS}$ has a good separated moduli space $M_{n,V}^{KSS}$, with conjecture that $M_{n,V}^{KSS}$ is proper and projective.\par
+Suppose $X\to B$ is a Koll\'ar family of Klt form with section $\sigma:B\to X$, let $Y=C(X/B-rK_{K/B})$, we consider
+\begin{displaymath}
+\{t\in B\mid X_t~\text{is semistable}\}=\{t\mid\frac{1}{r}(-K_{X_t})^n=\inf_{v\in\mathrm{Vol}_{\sigma(t),Y_t}}\hat{\mathrm{Vol}}(v)\}
+\end{displaymath}
+\begin{theorem}
+If $X\to B$ is a family of k.l.t. singulars, then $\hat{\mathrm{Vol}}(X_t,\sigma(t))$ is a constructible family.
+\end{theorem}
+
+\end{document} 
