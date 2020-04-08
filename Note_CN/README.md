@@ -1,1 +1,1 @@
-This folder is for some notes of mathematics in Chinese.
+This folder is for some notes of mathematics written in Chinese.
